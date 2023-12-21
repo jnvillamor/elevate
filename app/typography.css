@@ -35,4 +35,29 @@
 
 * { 
   font-family: 'Product-Sans', sans-serif;
+  font-size: 16px;
+}
+
+h1 { 
+  @apply sm:text-[2rem] text-[3.812rem]
+}
+
+h2 {
+  @apply sm:text-[1.812rem] text-[3.062rem]
+}
+
+h3 { 
+  @apply sm:text-[1.625rem] text-[2.438rem]
+}
+
+h4 { 
+  @apply sm:text-[1.438rem] text-[1.938rem]
+}
+
+h5 { 
+  @apply sm:text-[1.250rem] text-[1.562rem]
+}
+
+h6 { 
+  @apply sm:text-[1.125rem] text-[1.250rem]
 }
