@@ -1,10 +1,10 @@
 import React from 'react';
 import Image from 'next/image';
-import { Card, CardContent, CardTitle } from '../ui/card';
+import { Card, CardContent, CardTitle } from '../../../ui/card';
 import Link from 'next/link';
-import { Startup } from '../../common/index';
+import { Startup } from '../../../../common/index';
 
-const CustomCard = ( startup: Startup) => {
+const CustomCard = (startup: Startup) => {
   return (
     <Card className='mx-16 bg-neutrals-916 border border-neutrals-300 mb-6'>
       <CardContent className='p-6 flex gap-10 text-neutrals-50'>

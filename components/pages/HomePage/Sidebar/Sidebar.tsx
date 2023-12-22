@@ -1,10 +1,10 @@
 import React from 'react';
 import Image from 'next/image';
-import { Input } from '../ui/input';
-import { Button } from '../ui/button';
+import { Input } from '../../../ui/input';
+import { Button } from '../../../ui/button';
 import CustomCard from '../CustomCard/CustomCard';
-import dummydata from '../../data/startups.json';
-import { Startup } from '../../common/index';
+import dummydata from '../../../../data/startups.json';
+import { Startup } from '../../../../common/index';
 
 const Sidebar = () => {
   const startups: Startup[] = dummydata;
