@@ -49,6 +49,8 @@ module.exports = {
           700: "hsl(var(--neutrals-700))",
           800: "hsl(var(--neutrals-800))",
           900: "hsl(var(--neutrals-900))",
+          916: "hsl(var(--neutrals-916))",
+          932: "hsl(var(--neutrals-932))",
           950: "hsl(var(--neutrals-950))",
         },
         positive: {

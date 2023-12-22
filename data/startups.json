@@ -1,0 +1,37 @@
+[
+  {
+    "name": "Anskee",
+    "industry": "Transportation",
+    "location": "Davao, Philippines",
+    "founded": "2015",
+    "image": "/images/startup-1.png"
+  },
+  {
+    "name": "Peding's Cafe",
+    "industry": "Food industry",
+    "location": "Davao, Philippines",
+    "founded": "2020",
+    "image": "/images/startup-2.png"
+  },
+  {
+    "name": "Virtualahan Inc.",
+    "industry": "Consulting",
+    "location": "Davao, Philippines",
+    "founded": "2015",
+    "image": "/images/startup-3.png"
+  },
+  {
+    "name": "Green Habits Agriventure, Inc.",
+    "industry": "Food Service",
+    "location": "Davao, Philippines",
+    "founded": "2020",
+    "image": "/images/startup-4.png"
+  },
+  {
+    "name": "Project Mocapp",
+    "industry": "Agriculture",
+    "location": "Davao, Philippines",
+    "founded": "2019",
+    "image": "/images/startup-5.png"
+  }
+]
