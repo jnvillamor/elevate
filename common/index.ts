@@ -5,3 +5,13 @@ export type Startup = {
   founded: string;
   image: string;
 }
+
+export type FooterLink = {
+  name: string;
+  links: Links[];
+}
+
+export type Links = {
+  name: string;
+  href: string;
+}
