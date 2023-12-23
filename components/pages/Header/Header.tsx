@@ -4,15 +4,15 @@ import NavLinks from './NavLinks';
 
 const Header = () => {
   return (
-    <nav className='py-6 px-16 bg-neutrals-950 flex justify-between items-center'>
-      <div className='flex gap-2'>
+    <header className='py-6 px-16 bg-neutrals-950 flex justify-between items-center sticky'>
+      <nav className='flex gap-2'>
         <Link href='/'>
           <Image src='/logo.svg' alt='Logo' width={45} height={48} />
         </Link>
         <Image src='/logo-letter.svg' alt='Logo' width={150} height={46} />
-      </div>
+      </nav>
       <NavLinks />
-    </nav>
+    </header>
   );
 };
 

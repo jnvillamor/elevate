@@ -4,7 +4,7 @@ import { Button } from '@/components/ui/button';
 import useFilter from '@/hooks/useFilter';
 import React from 'react';
 
-const HomeContentFilter = () => {
+const MainContentFilter = () => {
   const { filter, handleFilter } = useFilter('all');
 
   return (
@@ -24,4 +24,4 @@ const HomeContentFilter = () => {
   );
 };
 
-export default HomeContentFilter;
+export default MainContentFilter;
