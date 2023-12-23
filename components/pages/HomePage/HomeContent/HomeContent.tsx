@@ -1,5 +1,6 @@
 import React from 'react'
 import HomeContentFilter from '../HomeContentFilter/HomeContentFilter'
+import Map from '../Map/Map'
 
 const HomeContent = () => {
   return (
@@ -7,8 +8,8 @@ const HomeContent = () => {
       <div>
         <HomeContentFilter />
       </div>
-      <div className='mb-6 flex-1 bg-primary-50 mx-16 border rounded-[32px]'>
-
+      <div className='mb-6 flex-1 mx-16 rounded-[32px]'>
+        <Map />
       </div>
     </div>
   )
