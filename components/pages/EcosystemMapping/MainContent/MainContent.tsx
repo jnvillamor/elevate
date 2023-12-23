@@ -8,7 +8,7 @@ const MainContent = () => {
       <div>
         <MainContentFilter />
       </div>
-      <div className='mb-6 flex-1 mx-16 rounded-[32px]'>
+      <div className='mb-14 flex-1 mx-16 rounded-[32px]'>
         <Map />
       </div>
     </div>

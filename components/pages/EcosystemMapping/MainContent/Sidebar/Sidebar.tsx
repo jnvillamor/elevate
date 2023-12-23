@@ -20,7 +20,7 @@ const Sidebar = () => {
           <Image src='/icons/sliders-horizontal.svg' width={32} height={32} alt='sliders' />
         </Button>
       </div>
-      <div className='overflow-auto flex-1'>
+      <div className='overflow-auto flex-1 mb-14'>
         {startups.map((startup) => (
           <CustomCard key={startup.name} {...startup} />
         ))}

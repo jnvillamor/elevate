@@ -47,6 +47,13 @@
   font-weight: 700;
 }
 
+@font-face {
+  font-family: 'Test-Staff-X';
+  src: url('../assets/fonts/test-staff/StaffXWideTest-Bold.otf');
+  font-size: bold;
+  font-weight: 700;
+}
+
 html, body { 
   font-family: 'Product-Sans', sans-serif;
 }

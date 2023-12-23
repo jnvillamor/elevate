@@ -116,6 +116,7 @@ module.exports = {
         arca_majora: ["Arca-Majora", "sans-serif"],
         product_sans: ["Product-Sans", "sans-serif"],
         test_staff: ["Test-Staff", "sans-serif"],
+        test_staff_x: ["Test-Staff-X", "sans-serif"],
       },
       borderRadius: {
         lg: "var(--radius)",
