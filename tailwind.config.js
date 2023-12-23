@@ -115,6 +115,7 @@ module.exports = {
       fontFamily: {
         arca_majora: ["Arca Majora", "sans-serif"],
         product_sans: ["Product Sans", "sans-serif"],
+        test_staff: ["Test Staff", "sans-serif"],
       },
       borderRadius: {
         lg: "var(--radius)",

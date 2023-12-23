@@ -33,6 +33,20 @@
   font-weight: 700;
 }
 
+@font-face {
+  font-family: 'Test-Staff';
+  src: url('../assets/fonts/test-staff/StaffWideTest-Regular.otf') format('opentype');
+  font-style: normal;
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: 'Test-Staff';
+  src: url('../assets/fonts/test-staff/StaffWideTest-Bold.otf') format('opentype');
+  font-style: bold;
+  font-weight: 700;
+}
+
 * { 
   font-family: 'Product-Sans', sans-serif;
 }
