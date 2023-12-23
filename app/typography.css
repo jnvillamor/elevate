@@ -47,7 +47,7 @@
   font-weight: 700;
 }
 
-* { 
+html, body { 
   font-family: 'Product-Sans', sans-serif;
 }
 
