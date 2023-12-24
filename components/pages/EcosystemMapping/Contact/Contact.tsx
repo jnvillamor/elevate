@@ -14,7 +14,7 @@ const Contact = () => {
             part of our success story – join us today!
           </p>
         </div>
-        <div>
+        <div className='mt-10'>
           <Button variant='outline_rounded' className='border-primary-500 text-primary-500 hover:bg-primary-300 hover:text-neutral-950'>
             Contact Us
           </Button>
