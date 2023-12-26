@@ -3,7 +3,7 @@
 import { IoCloseSharp } from 'react-icons/io5';
 import Image from 'next/image';
 import React from 'react';
-import { Select, SelectContent, SelectGroup, SelectItem, SelectLabel, SelectTrigger, SelectValue } from '@/components/ui/select';
+import { Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Button } from '@/components/ui/button';
 
 type Props = {
@@ -26,11 +26,14 @@ const Filter = (props: Props) => {
       <div>
         <div className='mb-16'>
           <Select>
-            <SelectTrigger className='w-full focus:outline-none border-neutrals-300 bg-neutrals-916 px-12 py-3 text-neutral-50 text-l font-normal'>
+            <SelectTrigger className='w-full focus:outline-none border-neutrals-300 bg-neutrals-916 px-12 py-3 text-neutral-50 text-lg font-normal'>
               <SelectValue placeholder='Sort by: ' />
             </SelectTrigger>
             <SelectContent className='bg-neturals-916 text-neutral-50'>
-              <SelectGroup></SelectGroup>
+              <SelectGroup className='bg-neutrals-916'>
+                <SelectItem value='etl' className='text-lg'>Earliest to Latest Establishment</SelectItem>
+                <SelectItem value='lte' className='text-lg'>Latest to Earliest Establishment</SelectItem>
+              </SelectGroup>
             </SelectContent>
           </Select>
         </div>
@@ -38,10 +41,10 @@ const Filter = (props: Props) => {
           <p className='text-neutrals-300 mb-3'>You can select more than 1</p>
           <div className='mb-6'>
             <Select>
-              <SelectTrigger className='w-full focus:outline-none border-neutrals-300 bg-neutrals-916 px-12 py-3 text-neutral-50 text-l font-normal'>
+              <SelectTrigger className='w-full focus:outline-none border-neutrals-300 bg-neutrals-916 px-12 py-3 text-neutral-50 text-lg font-normal'>
                 <SelectValue placeholder='Industry' />
               </SelectTrigger>
-              <SelectContent className='bg-neturals-916 text-neutral-50'>
+              <SelectContent className='bg-neturals-916 text-neutral-50 text-lg'>
                 <SelectGroup></SelectGroup>
               </SelectContent>
             </Select>
