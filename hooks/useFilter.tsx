@@ -1,9 +1,5 @@
+import { Filters } from '@/common';
 import React from 'react';
-
-type Filters = {
-  sort_by: 'etl' | 'lte';
-  categories: string[];
-};
 
 const useFilter = () => {
   const [filters, dispatch] = React.useReducer(

@@ -6,12 +6,19 @@ import React from 'react';
 import { Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Button } from '@/components/ui/button';
 import Multiselect from '../CustomMultiselect/Multiselect';
+import { Filters } from '@/common';
+import useGetData from '@/hooks/useGetData';
 
-type Props = {
+type FilterProps = {
   handleOpenFilter: () => void;
+  dispatch: React.Dispatch<any>;
+  filterData: (filters: Filters) => void;
+  filters: Filters;
 };
 
-const Filter = ({ handleOpenFilter }: Props) => {
+const Filter = ({ handleOpenFilter, dispatch, filterData, filters }: FilterProps) => {
+  const { getIndustries } = useGetData();
+  const options = getIndustries();
 
   return (
     <div className='z-10 py-12 px-16 absolute top-0 w-full h-full bg-neutrals-932'>
@@ -25,24 +32,33 @@ const Filter = ({ handleOpenFilter }: Props) => {
 
       <div>
         <div className='mb-16'>
-          <Select>
+          <Select value={filters.sort_by} onValueChange={(value) => dispatch({ type: 'sort_by', payload: value })}>
             <SelectTrigger className='w-full focus:outline-none border-neutrals-300 bg-neutrals-916 px-12 py-3 text-neutral-50 text-lg font-normal'>
               <SelectValue placeholder='Sort by: ' />
             </SelectTrigger>
             <SelectContent className='bg-neturals-916 text-neutral-50'>
               <SelectGroup className='bg-neutrals-916'>
-                <SelectItem value='etl' className='text-lg hover:bg-neutrals-700 hover:text-neutrals-50 focus:bg-neutrals-700 focus:text-neutrals-50'>Earliest to Latest Establishment</SelectItem>
-                <SelectItem value='lte' className='text-lg hover:bg-neutrals-700 hover:text-neutrals-50 focus:bg-neutrals-700 focus:text-neutrals-50'>Latest to Earliest Establishment</SelectItem>
+                <SelectItem value='etl' className='text-lg hover:bg-neutrals-700 hover:text-neutrals-50 focus:bg-neutrals-700 focus:text-neutrals-50'>
+                  Earliest to Latest Establishment
+                </SelectItem>
+                <SelectItem value='lte' className='text-lg hover:bg-neutrals-700 hover:text-neutrals-50 focus:bg-neutrals-700 focus:text-neutrals-50'>
+                  Latest to Earliest Establishment
+                </SelectItem>
               </SelectGroup>
             </SelectContent>
           </Select>
         </div>
         <div className='mb-32'>
           <p className='text-neutrals-300 mb-3'>You can select more than 1</p>
-          <Multiselect />
+          <Multiselect options={options} values={filters.categories} onChange={(values) => dispatch({ type: 'categories', payload: values})} />
         </div>
         <div className='flex justify-center'>
-          <Button onClick={() => handleOpenFilter()} variant={'outline_rounded'} className='bg-primary-600 text-neutrals-50 border-primary-600 py-2 px-6 text-l hover:bg-primary-400'>Search</Button>
+          <Button
+            onClick={() => handleOpenFilter()}
+            variant={'outline_rounded'}
+            className='bg-primary-600 text-neutrals-50 border-primary-600 py-2 px-6 text-l hover:bg-primary-400'>
+            Search
+          </Button>
         </div>
       </div>
     </div>

@@ -40,7 +40,7 @@ const Map = () => {
   })
   
   return (
-    <div className="h-full rounded-[32px]" ref={mapRef} />
+    <div className="h-full rounded-[32px] mb-14" ref={mapRef} />
   )
 }
 

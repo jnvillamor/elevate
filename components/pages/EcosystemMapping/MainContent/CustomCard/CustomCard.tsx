@@ -1,8 +1,8 @@
 import React from 'react';
 import Image from 'next/image';
-import { Card, CardContent, CardTitle } from '../../../../../ui/card';
+import { Card, CardContent, CardTitle } from '../../../../ui/card';
 import Link from 'next/link';
-import { Startup } from '../../../../../../common/index';
+import { Startup } from '../../../../../common/index';
 
 const CustomCard = (startup: Startup) => {
   return (

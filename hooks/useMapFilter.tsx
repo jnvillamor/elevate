@@ -2,7 +2,7 @@ import React from 'react'
 
 type InitialMapFilter = 'all' | 'startup' | 'enablers';
 
-const useMapFilter = (initialMapFilter: InitialMapFilter) => {
+const useMapFilter = (initialMapFilter: InitialMapFilter = 'all') => {
   const [mapFilter, setMapFilter] = React.useState(initialMapFilter)
 
   const handleMapFilter = (filter: InitialMapFilter) => {
