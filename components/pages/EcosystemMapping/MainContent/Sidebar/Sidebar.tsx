@@ -6,7 +6,7 @@ import useFilter from '@/hooks/useFilter';
 import Filter from './Filter/Filter';
 
 const Sidebar = () => {
-  const { openFilter, handleOpenFilter } = useFilter();
+  const { filters, openFilter, handleOpenFilter, dispatch } = useFilter(); 
 
   return (
     <aside className='w-5/12 h-full flex flex-col bg-neutrals-932 relative'>

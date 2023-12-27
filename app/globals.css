@@ -149,4 +149,10 @@
     @apply bg-background text-foreground;
   }
 
+  input:checked + label div {
+    @apply border-none bg-primary-600 rounded
+  }
+  input:checked + label svg {
+    @apply block text-neutrals-50
+  }
 }

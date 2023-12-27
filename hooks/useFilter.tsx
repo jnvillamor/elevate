@@ -1,34 +1,40 @@
-import { useState } from 'react';
+import React from 'react';
 
-type InitialState = 'all' | 'startup' | 'enablers';
 type Filters = {
-  industry: string[];
-  sort_by: string;
+  sort_by: 'etl' | 'lte';
+  categories: string[];
 };
 
-const useFilter = (initialState: InitialState = 'all') => {
-  const [filter, setFilter] = useState(initialState);
-  const [filters, setFilters] = useState<Filters>({
-    industry: [],
-    sort_by: ''
-  });
-  const [openFilter, setOpenFilter] = useState(false);
+const useFilter = () => {
+  const [filters, dispatch] = React.useReducer(
+    (state: Filters, action: any) => {
+      switch (action.type) {
+        case 'sort_by':
+          return { ...state, sort_by: action.payload };
+        case 'categories':
+          return { ...state, categories: action.payload };
+        default:
+          return state;
+      }
+    },
+    {
+      sort_by: 'etl',
+      categories: []
+    }
+  );
+
+  const [openFilter, setOpenFilter] = React.useState(false);
 
   const handleOpenFilter = () => {
     setOpenFilter(!openFilter);
   }
-  
-  const handleFilter = (filter: InitialState) => {
-    setFilter(filter);
-  };
 
   return {
-    filter,
     filters,
     openFilter,
-    handleFilter,
+    dispatch,
     handleOpenFilter
-  };
+  }
 };
 
 export default useFilter;
