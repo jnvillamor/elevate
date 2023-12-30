@@ -1,34 +1,28 @@
-import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { Startup } from '@/common';
-import Image from 'next/image';
 import React from 'react';
-import CustomCard from '../CustomCard/CustomCard';
+import MapViewCard from '../MapViewCard/MapViewCard';
+import Filter from '../Filter/Filter';
+import SearchBar from '../SearchBar/SearchBar';
+import { useMyContext } from '@/context/DataContextProvider';
+import SelectedFilter from '../SelectedFilter/SelectedFilter';
 
-type Props = {
-  handleOpenFilter: () => void;
-  data: Startup[];
-};
-
-const Result = ({ handleOpenFilter, data }: Props) => {
+const Result = () => {
+  const { data, openFilter, filters, handleOpenFilter } = useMyContext();
 
   return (
-    <>
-      <div className='mx-16 my-12 flex items-center'>
-        <Input placeholder='Search...' className='rounded-r-none' />
-        <Button variant={'outline'} className='rounded-r-sm rounded-l-none bg-primary-600 outline-none border-none hover:bg-primary-500'>
-          <Image src='/icons/search-icon.svg' width={20} height={20} alt='search' />
-        </Button>
-        <Button onClick={() => handleOpenFilter()} variant={'outline'} className='border-none p-0 outline-none ml-4 hover:bg-transparent'>
-          <Image src='/icons/sliders-horizontal.svg' width={32} height={32} alt='sliders' />
-        </Button>
+    <div className='h-full flex flex-col relative'>
+      <div className='mx-16 my-12 flex flex-col gap-6'>
+        <div className='flex'>
+          <SearchBar handleOpenFilter={handleOpenFilter} />
+        </div>
+        <SelectedFilter />
       </div>
       <div className='overflow-auto flex-1 mb-14'>
         {data.map((startup) => (
-          <CustomCard key={startup.name} {...startup} />
+          <MapViewCard key={startup.name} {...startup} />
         ))}
       </div>
-    </>
+      {openFilter && <Filter />}
+    </div>
   );
 };
 

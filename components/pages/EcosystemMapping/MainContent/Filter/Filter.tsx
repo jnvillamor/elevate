@@ -6,20 +6,12 @@ import React from 'react';
 import { Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Button } from '@/components/ui/button';
 import Multiselect from '../CustomMultiselect/Multiselect';
-import { Filters } from '@/common';
-import useGetData from '@/hooks/useGetData';
+import { useMyContext } from '@/context/DataContextProvider';
 
-type FilterProps = {
-  handleOpenFilter: () => void;
-  dispatch: React.Dispatch<any>;
-  filterData: (filters: Filters) => void;
-  filters: Filters;
-};
-
-const Filter = ({ handleOpenFilter, dispatch, filterData, filters }: FilterProps) => {
-  const { getIndustries } = useGetData();
+const Filter = () => {
+  const { filters, setFilters, handleOpenFilter, getIndustries } = useMyContext();
   const options = getIndustries();
-
+  
   return (
     <div className='z-10 py-12 px-16 absolute top-0 w-full h-full bg-neutrals-932'>
       <div className='flex justify-between mb-12'>
@@ -32,7 +24,7 @@ const Filter = ({ handleOpenFilter, dispatch, filterData, filters }: FilterProps
 
       <div>
         <div className='mb-16'>
-          <Select value={filters.sort_by} onValueChange={(value) => dispatch({ type: 'sort_by', payload: value })}>
+          <Select value={filters.sort_by} onValueChange={(value) => setFilters({ type: 'sort_by', payload: value })}>
             <SelectTrigger className='w-full focus:outline-none border-neutrals-300 bg-neutrals-916 px-12 py-3 text-neutral-50 text-lg font-normal'>
               <SelectValue placeholder='Sort by: ' />
             </SelectTrigger>
@@ -50,7 +42,7 @@ const Filter = ({ handleOpenFilter, dispatch, filterData, filters }: FilterProps
         </div>
         <div className='mb-32'>
           <p className='text-neutrals-300 mb-3'>You can select more than 1</p>
-          <Multiselect options={options} values={filters.categories} onChange={(values) => dispatch({ type: 'categories', payload: values})} />
+          <Multiselect options={options} values={filters.categories} onChange={(values) => setFilters({ type: 'categories', payload: values})} />
         </div>
         <div className='flex justify-center'>
           <Button

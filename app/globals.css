@@ -133,7 +133,7 @@
   }
 
   *::-webkit-scrollbar {
-    width: 8px;
+    width: 6px;
   }
 
   *::-webkit-scrollbar-track {
@@ -154,5 +154,9 @@
   }
   input:checked + label svg {
     @apply block text-neutrals-50
+  }
+
+  .horizontal__bar::-webkit-scrollbar {
+    display: none;
   }
 }

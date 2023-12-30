@@ -4,7 +4,7 @@ import { Card, CardContent, CardTitle } from '../../../../ui/card';
 import Link from 'next/link';
 import { Startup } from '../../../../../common/index';
 
-const CustomCard = (startup: Startup) => {
+const MapViewCard = (startup: Startup) => {
   return (
     <Card className='mx-16 bg-neutrals-916 border border-neutrals-300 mb-6'>
       <CardContent className='p-6 flex gap-10 text-neutrals-50'>
@@ -34,4 +34,4 @@ const CustomCard = (startup: Startup) => {
   );
 };
 
-export default CustomCard;
+export default MapViewCard;

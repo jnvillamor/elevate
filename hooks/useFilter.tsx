@@ -9,13 +9,16 @@ const useFilter = () => {
           return { ...state, sort_by: action.payload };
         case 'categories':
           return { ...state, categories: action.payload };
+        case 'data_type':
+          return { ...state, data_type: action.payload };
         default:
           return state;
       }
     },
     {
       sort_by: 'etl',
-      categories: []
+      categories: [],
+      data_type: 'all'
     }
   );
 

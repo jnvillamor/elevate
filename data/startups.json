@@ -1,7 +1,7 @@
 [
   {
     "id": 1,
-    "type": "startup",
+    "type": "Startup",
     "name": "Anskee",
     "industry": "Transportation",
     "location": "Davao, Philippines",
@@ -10,7 +10,7 @@
   },
   {
     "id": 2,
-    "type": "startup",
+    "type": "Startup",
     "name": "Peding's Cafe",
     "industry": "Food industry",
     "location": "Davao, Philippines",
@@ -19,7 +19,7 @@
   },
   {
     "id": 3,
-    "type": "enabler",
+    "type": "Enabler",
     "name": "Virtualahan Inc.",
     "industry": "Consulting",
     "location": "Davao, Philippines",
@@ -28,7 +28,7 @@
   },
   {
     "id": 4,
-    "type": "enabler",
+    "type": "Enabler",
     "name": "Green Habits Agriventure, Inc.",
     "industry": "Food Service",
     "location": "Davao, Philippines",
@@ -37,7 +37,7 @@
   },
   {
     "id": 5,
-    "type": "startup",
+    "type": "Startup",
     "name": "Project Mocapp",
     "industry": "Agriculture",
     "location": "Davao, Philippines",

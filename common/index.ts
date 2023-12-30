@@ -1,6 +1,6 @@
 export type Startup = {
   id: number;
-  type: 'startup' | 'investor';
+  type: 'Startup' | 'Enabler';
   name: string;
   industry: string;
   location: string;
@@ -21,4 +21,5 @@ export type Links = {
 export type Filters = {
   sort_by: 'etl' | 'lte';
   categories: string[];
+  data_type: 'all' | 'startup' | 'enabler';
 };

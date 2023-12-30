@@ -1,30 +1,27 @@
 'use client';
 
+import { Button } from '@/components/ui/button';
 import React from 'react';
-import MapFilter from './MapFillter/MapFilter';
-import Map from './Map/Map';
-import useMapFilter from '@/hooks/useMapFilter';
-import useFilter from '@/hooks/useFilter';
-import useGetData from '@/hooks/useGetData';
-import Filter from './Filter/Filter';
-import Result from './Result/Result';
+import MapView from './MapView';
+import TableView from './TableView';
 
 const MainContent = () => {
-  const { mapFilter, handleMapFilter } = useMapFilter();
-  const { filters, openFilter, handleOpenFilter, dispatch } = useFilter();
-  const { filteredData, filterData } = useGetData();
-    
+  const [view, setView] = React.useState<'map' | 'table'>('map');
+
   return (
-    <div className='max-h-screen h-screen flex'>
-      <div className='w-5/12 h-full flex flex-col bg-neutrals-932 relative'>
-        {openFilter && <Filter handleOpenFilter={handleOpenFilter} filterData={filterData} filters={filters} dispatch={dispatch} />}
-        <Result handleOpenFilter={handleOpenFilter} data={filteredData} />
+    <>
+      <div className='pt-12 pb-32 bg-neutrals-950 flex justify-center items-center'>
+        <div className='rounded-full border border-primary-50 flex items-center p-1 gap-1'>
+          <Button className='rounded-full' variant={view === 'map' ? 'default' : 'ghost'} onClick={() => setView('map')}>
+            Map View
+          </Button>
+          <Button className='rounded-full' variant={view === 'table' ? 'default' : 'ghost'} onClick={() => setView('table')}>
+            Table View
+          </Button>
+        </div>
       </div>
-      <div className='max-h-full w-7/12 flex flex-col mx-16'>
-        <MapFilter />
-        <Map />
-      </div>
-    </div>
+      {view === 'map' ? <MapView /> : <TableView />}
+    </>
   );
 };
 
