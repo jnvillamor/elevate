@@ -1,5 +1,3 @@
-import { Filters } from '@/common';
-import useGetData from '@/hooks/useGetData';
 import usePanelControl from '@/hooks/usePanelControl';
 import { cn } from '@/lib/utils';
 import React from 'react';
