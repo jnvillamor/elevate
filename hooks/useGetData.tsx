@@ -37,6 +37,11 @@ const useGetData = () => {
       });
     }
 
+    // filter by data_type
+    if (filters.data_type !== 'all') {
+      data = data.filter((item) => item.type.toLowerCase() === filters.data_type);
+    }
+
     setFilteredData(data);
   };
 

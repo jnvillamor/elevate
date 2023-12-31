@@ -10,18 +10,19 @@ const MapFilter = () => {
   return (
     <div className='flex items-center justify-between'>
       <div className='flex items-center gap-3'>
-
-        <Button variant={filters.data_type === 'all' ? 'default' : 'outline_rounded'} onClick={() => setFilters({ type: 'type', payload: 'all' })}>
+        <Button
+          variant={filters.data_type === 'all' ? 'default' : 'outline_rounded'}
+          onClick={() => setFilters({ type: 'data_type', payload: 'all' })}>
           All
         </Button>
         <Button
           variant={filters.data_type === 'startup' ? 'default' : 'outline_rounded'}
-          onClick={() => setFilters({ type: 'type', payload: 'startup' })}>
+          onClick={() => setFilters({ type: 'data_type', payload: 'startup' })}>
           Startup
         </Button>
         <Button
           variant={filters.data_type === 'enabler' ? 'default' : 'outline_rounded'}
-          onClick={() => setFilters({ type: 'type', payload: 'enablers' })}>
+          onClick={() => setFilters({ type: 'data_type', payload: 'enabler' })}>
           Enablers
         </Button>
       </div>

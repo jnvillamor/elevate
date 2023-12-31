@@ -3,7 +3,7 @@
 import { Filters, Startup } from '@/common';
 import useFilter from '@/hooks/useFilter';
 import useGetData from '@/hooks/useGetData';
-import { FC, ReactNode, createContext, useContext, useReducer } from 'react';
+import { FC, ReactNode, createContext, useContext, useEffect, useReducer } from 'react';
 
 interface DataContextType {
   data: Startup[];
@@ -24,6 +24,14 @@ interface DataContextProviderProps {
 const DataContextProvider: FC<DataContextProviderProps> = ({ children }) => {
   const { filteredData: data, filterData, getIndustries } = useGetData();
   const { filters, dispatch: setFilters, openFilter, handleOpenFilter } = useFilter();
+
+  useEffect(() => {
+    const handleFilter = () => {
+      filterData(filters);
+    }
+
+    handleFilter();
+  }, [filters])
 
   const contextValue = {
     data,
