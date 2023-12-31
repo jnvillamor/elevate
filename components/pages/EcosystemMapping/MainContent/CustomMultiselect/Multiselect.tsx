@@ -25,7 +25,7 @@ const Multiselect = ({ options, values, onChange }: MultiselectProps) => {
   return (
     <fieldset className='bg-neutrals-916 border border-neutrals-300 h-10 rounded-md relative'>
       <MultiselectTrigger id='multi__select__button' onClick={() => setOpenPanel(!openPanel)} className='px-12'>
-        {values?.length > 0 ? <MultiselectValue placeholder={`${values?.length} items selected`}/> : <MultiselectValue placeholder='Select Industry' />}
+        {values && values?.length > 0 ? <MultiselectValue placeholder={`${values?.length} items selected`}/> : <MultiselectValue placeholder='Select Industry' />}
       </MultiselectTrigger>
       <div
         id='multi__select__panel'
