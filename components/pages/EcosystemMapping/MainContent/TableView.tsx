@@ -9,7 +9,7 @@ const TableView = () => {
   const { handleOpenFilter, setFilters, openFilter, filters, data } = useMyContext();
 
   return (
-    <div className='pt-11 bg-neutrals-950 px-56 relative w-full border border-b-neutrals-300'>
+    <div className='pt-11 bg-neutrals-950 px-56 relative w-full border-b border-neutrals-300'>
       <div className='bg-neutrals-916 rounded-md'>
         <div className='flex items-center bg-neutrals-932 px-12 py-6 rounded-t-md'>
           <SearchBar handleOpenFilter={handleOpenFilter} />
@@ -19,7 +19,7 @@ const TableView = () => {
           <MapFilter />
         </div>
       </div>
-      <div className='gap-9 flex-wrap flex'>
+      <div className='gap-9 flex-wrap flex justify-center'>
         {data.map((startup) => (
           <TableViewCard data={startup} key={startup.id} />
         ))}
