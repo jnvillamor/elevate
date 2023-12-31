@@ -4,6 +4,11 @@ import { useMyContext } from '@/context/DataContextProvider';
 import MapFilter from './MapFillter/MapFilter';
 import SelectedFilter from './SelectedFilter/SelectedFilter';
 import TableViewCard from './TableViewCard/TableViewCard';
+import Link from 'next/link';
+import { TfiAngleDoubleLeft } from 'react-icons/tfi';
+import { TfiAngleLeft } from 'react-icons/tfi';
+import { TfiAngleDoubleRight } from "react-icons/tfi";
+import { TfiAngleRight } from "react-icons/tfi";
 
 const TableView = () => {
   const { handleOpenFilter, setFilters, openFilter, filters, data } = useMyContext();
@@ -23,6 +28,21 @@ const TableView = () => {
         {data.map((startup) => (
           <TableViewCard data={startup} key={startup.id} />
         ))}
+      </div>
+      <div className='mt-16 mb-32 flex gap-1 text-neutrals-300 justify-center'>
+        <Link href='/'>
+          <TfiAngleDoubleLeft size={24} />
+        </Link>
+        <Link href='/'>
+          <TfiAngleLeft size={24} />
+        </Link>
+        <span className='mx-2'>1 of 1</span>
+        <Link href='/'>
+          <TfiAngleRight size={24} />
+        </Link>
+        <Link href='/'>
+          <TfiAngleDoubleRight size={24} />
+        </Link>
       </div>
     </div>
   );
