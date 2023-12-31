@@ -51,7 +51,7 @@ const useGetData = () => {
     const industries = data.map((item) => item.industry);
 
     // remove duplicates
-    const uniqueIndustries = [...new Set(industries)];
+    const uniqueIndustries = Array.from(new Set(industries));
     return uniqueIndustries;
   };
 
