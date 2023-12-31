@@ -157,6 +157,6 @@
   }
 
   .horizontal__bar::-webkit-scrollbar {
-    display: none;
+    height: 8px;
   }
 }

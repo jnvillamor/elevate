@@ -10,22 +10,19 @@ import MultiselectItems from './MultiselectItems';
 type MultiselectProps = {
   values?: string[];
   options: string[];
-  onChange?: (values: string[]) => void;
+  onChange?: React.Dispatch<React.SetStateAction<string[]>>;
 };
 
 const Multiselect = ({ options, values, onChange }: MultiselectProps) => {
   const { openPanel, setOpenPanel } = usePanelControl();
-  const [selected, setSelected] = React.useState<string[]>([]);
 
   const handleChange = (checked: boolean, value: string) => {
-    if(checked) {
-      setSelected([...selected, value]);
+    if (checked) {
+      onChange?.((prev) => [...prev, value]);
     } else {
-      setSelected(selected.filter((item) => item !== value));
+      onChange?.((prev) => prev.filter((item) => item !== value));
     }
-
-    onChange?.(selected);
-  }
+  };
 
   return (
     <fieldset className='bg-neutrals-916 border border-neutrals-300 h-10 rounded-md relative'>
@@ -40,7 +37,7 @@ const Multiselect = ({ options, values, onChange }: MultiselectProps) => {
           !openPanel && 'animate-out hidden fade-out-0 slide-out-to-top-2 zoom-out-95'
         )}>
         {options.map((item) => (
-          <MultiselectItems key={item} value={item} checked={ values ? values?.includes(item) : false } onChange={handleChange} >
+          <MultiselectItems key={item} value={item} checked={values ? values?.includes(item) : false} onChange={handleChange}>
             {item}
           </MultiselectItems>
         ))}

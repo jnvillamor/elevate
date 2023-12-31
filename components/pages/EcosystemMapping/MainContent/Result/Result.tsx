@@ -6,11 +6,11 @@ import { useMyContext } from '@/context/DataContextProvider';
 import SelectedFilter from '../SelectedFilter/SelectedFilter';
 
 const Result = () => {
-  const { data, openFilter, filters, handleOpenFilter } = useMyContext();
+  const { data, openFilter, handleOpenFilter } = useMyContext();
 
   return (
     <div className='h-full flex flex-col relative'>
-      <div className='mx-16 my-12 flex flex-col gap-6'>
+      <div className='mx-16 my-12 flex flex-col'>
         <div className='flex'>
           <SearchBar handleOpenFilter={handleOpenFilter} />
         </div>

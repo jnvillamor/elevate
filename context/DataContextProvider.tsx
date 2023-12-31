@@ -12,7 +12,7 @@ interface DataContextType {
   handleOpenFilter: () => void;
   setFilters: React.Dispatch<any>;
   filterData: (filters: Filters) => void;
-  getIndustries: () => String[];
+  getIndustries: () => string[];
 }
 
 const DataContext = createContext<DataContextType | undefined>(undefined);

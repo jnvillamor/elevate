@@ -11,6 +11,8 @@ const useFilter = () => {
           return { ...state, categories: action.payload };
         case 'data_type':
           return { ...state, data_type: action.payload };
+        case 'whole_change':
+          return { ...action.payload };
         default:
           return state;
       }

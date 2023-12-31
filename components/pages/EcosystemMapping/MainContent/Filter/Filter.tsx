@@ -11,7 +11,19 @@ import { useMyContext } from '@/context/DataContextProvider';
 const Filter = () => {
   const { filters, setFilters, handleOpenFilter, getIndustries } = useMyContext();
   const options = getIndustries();
-  
+  const [selected, setSelected] = React.useState<string[]>(filters.categories);
+  const [sort_by, setSortBy] = React.useState<string>(filters.sort_by);
+
+  const handleFilter = () => {
+    const newValue = {
+      ...filters,
+      categories: selected,
+      sort_by: sort_by
+    }
+    setFilters({ type: 'whole_change', payload: newValue });
+    handleOpenFilter();
+  }
+
   return (
     <div className='z-10 py-12 px-16 absolute top-0 w-full h-full bg-neutrals-932'>
       <div className='flex justify-between mb-12'>
@@ -24,7 +36,7 @@ const Filter = () => {
 
       <div>
         <div className='mb-16'>
-          <Select value={filters.sort_by} onValueChange={(value) => setFilters({ type: 'sort_by', payload: value })}>
+          <Select value={sort_by} onValueChange={(value) => setSortBy(value)}>
             <SelectTrigger className='w-full focus:outline-none border-neutrals-300 bg-neutrals-916 px-12 py-3 text-neutral-50 text-lg font-normal'>
               <SelectValue placeholder='Sort by: ' />
             </SelectTrigger>
@@ -42,11 +54,11 @@ const Filter = () => {
         </div>
         <div className='mb-32'>
           <p className='text-neutrals-300 mb-3'>You can select more than 1</p>
-          <Multiselect options={options} values={filters.categories} onChange={(values) => setFilters({ type: 'categories', payload: values})} />
+          <Multiselect options={options} values={selected} onChange={setSelected} />
         </div>
         <div className='flex justify-center'>
           <Button
-            onClick={() => handleOpenFilter()}
+            onClick={() => handleFilter()}
             variant={'outline_rounded'}
             className='bg-primary-600 text-neutrals-50 border-primary-600 py-2 px-6 text-l hover:bg-primary-400'>
             Search
