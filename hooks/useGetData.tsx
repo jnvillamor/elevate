@@ -59,7 +59,7 @@ const useGetData = () => {
     const startup = mainData.find((item) => item.id.toString() === id);
     return startup;
   };
-
+  
   return { filteredData, filterData, getIndustries, getStartup };
 };
 

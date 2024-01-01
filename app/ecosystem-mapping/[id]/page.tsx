@@ -43,6 +43,9 @@ const StartupDetails = ({ params }: { params: { id: string } }) => {
           <div className='lg:w-1/3 w-full flex flex-col gap-6'>
             <div className='p-9 bg-neutrals-916 rounded-2xl'>
               <Details startup={detials} />
+              <div className='w-full aspect-square mt-6'>
+                <Map startup={startup}/>
+              </div>
             </div>
             <div className='p-9 bg-neutrals-916 rounded-2xl'>
               <Contacts contacts={startup.contacts} />

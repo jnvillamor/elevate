@@ -2,17 +2,13 @@ import React from 'react';
 import Result from './Result/Result';
 import Map from './Map/Map';
 import MapFilter from './MapFillter/MapFilter';
-import { Filters, Startup } from '@/common';
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
-
-type MapViewProps = {
-  data: Startup[];
-  filters: Filters;
-  dispatch: React.Dispatch<any>;
-};
+import { useMyContext } from '@/context/DataContextProvider';
 
 const MapView = () => {
+  const { data } = useMyContext();
+
   return (
     <div className='flex'>
       <div className='max-h-screen h-screen w-5/12 bg-neutrals-932'>
@@ -37,7 +33,7 @@ const MapView = () => {
           </div>
         </div>
         <div className='flex-1 pb-20'>
-          <Map />
+          <Map startup={data} />
         </div>
       </div>
     </div>

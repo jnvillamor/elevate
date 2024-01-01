@@ -15,6 +15,10 @@ export type Startup = {
   name: string;
   industry: string;
   location: string;
+  coords: {
+    lat: number;
+    lng: number;
+  };
   founded: string;
   image: string;
   about: string;

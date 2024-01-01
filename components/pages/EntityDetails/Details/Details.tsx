@@ -33,9 +33,7 @@ const Details = ({ startup }: DetailsProps) => {
           <span>{startup.location}</span>
         </div>
       </div>
-      <div className='w-full aspect-square mt-6'>
-        <Map />
-      </div>
+      
     </>
   );
 };
