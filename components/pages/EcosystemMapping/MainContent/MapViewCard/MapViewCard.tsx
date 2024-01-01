@@ -25,7 +25,7 @@ const MapViewCard = (startup: Startup) => {
               <span>{startup.founded}</span>
             </div>
           </div>
-          <Link href='/' className='text-primary-600'>
+          <Link href={`/ecosystem-mapping/${startup.id}`} className='text-primary-600'>
             View More
           </Link>
         </div>

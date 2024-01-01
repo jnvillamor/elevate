@@ -33,7 +33,7 @@ const TableViewCard = ({ data }: TableViewCardProps) => {
               </div>
             </div>
           </div>
-          <Link href='/' className='text-primary-600'>
+          <Link href={`/ecosystem-mapping/${data.id}`} className='text-primary-600'>
             View More
           </Link>
         </div>

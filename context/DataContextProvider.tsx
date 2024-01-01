@@ -28,10 +28,10 @@ const DataContextProvider: FC<DataContextProviderProps> = ({ children }) => {
   useEffect(() => {
     const handleFilter = () => {
       filterData(filters);
-    }
+    };
 
     handleFilter();
-  }, [filters])
+  }, [filters]);
 
   const contextValue = {
     data,
@@ -40,15 +40,10 @@ const DataContextProvider: FC<DataContextProviderProps> = ({ children }) => {
     handleOpenFilter,
     setFilters,
     filterData,
-    getIndustries,
+    getIndustries
   };
-  
-  return (
-    <DataContext.Provider value={contextValue}>
-      {children}
-    </DataContext.Provider>
-  );
 
+  return <DataContext.Provider value={contextValue}>{children}</DataContext.Provider>;
 };
 
 export const useMyContext = (): DataContextType => {

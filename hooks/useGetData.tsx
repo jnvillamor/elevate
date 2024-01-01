@@ -55,7 +55,12 @@ const useGetData = () => {
     return uniqueIndustries;
   };
 
-  return { filteredData, filterData, getIndustries };
+  const getStartup = (id: string) => {
+    const startup = mainData.find((item) => item.id.toString() === id);
+    return startup;
+  };
+
+  return { filteredData, filterData, getIndustries, getStartup };
 };
 
 export default useGetData;
