@@ -31,8 +31,8 @@ const SignUpCard = ({ type }: { type: String }) => {
         <span className='text-3xl'>a {type}</span>
       </div>
       <div className='flex flex-col gap-6 my-6'>
-        {typeInfo[type].map((info) => (
-          <div key={info} className='flex gap-3'>
+        {typeInfo[type].map((info: String[], index) => (
+          <div key={index} className='flex gap-3'>
             <div className={cn(
               type === 'startup' && 'text-primary-600',
               type === 'enabler' && 'text-[#E65D10]',
