@@ -1,40 +1,13 @@
-'use client';
-
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { Button } from '../ui/button';
 import { UserAuth } from '@/contexts/AuthContext';
 
-type NavLinksProps = {path: string}
+type NavLinksProps = { path: string };
 
-const NavLinks = ({ path  }: NavLinksProps) => {
-  const [loading, setLoading] = useState(true)
+const NavLinks = ({ path }: NavLinksProps) => {
 
-  const { user, googleSignIn, logOut } = UserAuth();
-
-  const handleSigIn = async () =>{
-    try{
-      await googleSignIn()
-    } catch(error) {
-      console.log(error);
-    }
-  }
-
-  const handleSignOut = async () => {
-    try{
-      await logOut()
-    } catch (error) {
-      console.log(error)
-    }
-  }
-
-  useEffect(() => {
-    const checkAuthentication = async () => {
-      await new Promise((resolve) => setTimeout(resolve, 50))
-      setLoading(false)
-    }
-    checkAuthentication();
-  }, [user]);
+  const { user } = UserAuth();
 
   return (
     <div className='flex items-center gap-6'>
@@ -44,37 +17,26 @@ const NavLinks = ({ path  }: NavLinksProps) => {
       <Link href='/ecosystem-mapping'>
         <Button variant={path === 'ecosystem-mapping' ? 'default' : 'outline_rounded'}>Ecosystem Mapping</Button>
       </Link>
-      <Link href='/dashboard'>
-        <Button variant={path === 'dashboard' ? 'default' : 'outline_rounded'}>Dashboard</Button>
-      </Link>
-      <Link href='/login'>
-        <Button variant={path === 'login' ? 'default' : 'outline_rounded'}>Log In</Button>
+      <Link href='/contact'>
+        <Button variant={path === 'contact' ? 'default' : 'outline_rounded'}>Contact</Button>
       </Link>
 
-      {!user ? null : (
+      {user && (
         <Link href='/profile'>
-          <Button variant={path === '/profile' ? 'default' : 'outline_rounded'}>Profile</Button>
+          <Button variant={path === 'profile' ? 'default' : 'outline_rounded'}>Profile</Button>
         </Link>
       )}
 
-        {loading ? (<p>Loading...</p>) : !user ? (       
-          <ul className='flex'>
-            <li onClick={handleSigIn} className='p-2 pr-8 cursor-pointer'>
-            Login
-            </li>
-            {/* <li onClick={handleSigIn} className='p-2 cursor-pointer'>
-            Sign up
-            </li> */}
-            <Link href='/signup'>
-              <Button variant={path === '/signup' ? 'default' : 'outline_rounded'}>Sign Up</Button>
-            </Link>
-          </ul>) : (
-          <div>
-            <p>Madayaw! {user.displayName}</p>
-            <p onClick={handleSignOut} className='cursor-pointer bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-10 rounded-full' >Sign out</p>
-          </div>
-        )}
-
+      {!user && (
+        <>
+          <Link href='/login'>
+            <Button variant='outline_rounded'>Log In</Button>
+          </Link>
+          <Link href='/signup'>
+            <Button variant='outline_rounded'>Sign Up</Button>
+          </Link>
+        </>
+      )}
     </div>
   );
 };

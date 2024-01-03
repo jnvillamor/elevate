@@ -1,11 +1,15 @@
 import LoginForm from '@/components/pages/Login/LoginForm'
 import Image from 'next/image'
 import Link from 'next/link'
+import { BiLeftArrowAlt } from "react-icons/bi";
 
 const Login = () => {  
   return (
     <div className='flex bg-neutrals-932 text-neutrals-50'>
-      <div className='hidden lg:block w-5/12 h-screen'>
+      <div className='hidden lg:block w-5/12 h-screen relative'>
+        <Link href='/' className='absolute top-6 left-6'>
+          <BiLeftArrowAlt size={32} />
+        </Link>
         <Image src='/icons/login-hero.svg' width={500} height={1000} alt='hero' className='w-full h-full'/>
       </div>
       <div className='flex flex-grow justify-center items-center'>
