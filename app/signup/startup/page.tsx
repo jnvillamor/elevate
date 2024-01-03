@@ -9,7 +9,7 @@ const signup_as_startup = () => {
   return (
     <div className='bg-neutrals-932 h-screen flex'>
       <div className='w-5/12 lg:block hidden relative text-center'>
-        <h1 className='flex flex-col gap-1 text-5xl absolute top-32 font-bold font-test_staff inset-0 '>
+        <h1 className='flex flex-col gap-2 text-5xl absolute top-32 font-bold font-test_staff inset-0 '>
           <span>EXPANDING</span> <span>STARTUP</span>
         </h1>
         <Link href='/' className='absolute top-6 left-6'>
