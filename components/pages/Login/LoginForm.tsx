@@ -1,7 +1,8 @@
 'use client';
 import { Button } from '@/components/ui/button';
-import { Form, FormControl, FormField, FormItem, FormLabel } from '@/components/ui/form';
+import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
+import { cn } from '@/lib/utils';
 import { zodResolver } from '@hookform/resolvers/zod';
 import Link from 'next/link';
 import React from 'react';
@@ -39,16 +40,20 @@ const LoginForm = () => {
         <FormField
           control={form.control}
           name='email'
-          render={({ field }) => (
+          render={({ field, formState }) => (
             <FormItem className='mb-6'>
               <FormLabel className='text-xl mb-2'>Email Address</FormLabel>
               <FormControl>
                 <Input
                   placeholder='Email Address'
                   {...field}
-                  className='placeholder:text-neutrals-600 bg-neutrals-916 px-6 py-3 border-neutrals-600'
+                  className={cn(
+                    'placeholder:text-neutrals-600 bg-neutrals-916 px-6 py-3 border-neutrals-600',
+                    formState.errors.email && 'border-negative-600 placeholder:text-negative-600'
+                  )}
                 />
               </FormControl>
+              {formState.errors.email && <FormMessage className='text-negative-600'>{formState.errors.email.message}</FormMessage>}
             </FormItem>
           )}
         />
@@ -56,7 +61,7 @@ const LoginForm = () => {
         <FormField
           control={form.control}
           name='password'
-          render={({ field }) => (
+          render={({ field, formState }) => (
             <FormItem className='mb-6'>
               <FormLabel className='text-xl mb-2'>Password</FormLabel>
               <FormControl>
@@ -64,9 +69,13 @@ const LoginForm = () => {
                   type='password'
                   placeholder='Password'
                   {...field}
-                  className='placeholder:text-neutrals-600 bg-neutrals-916 px-6 py-3 border-neutrals-600'
+                  className={cn(
+                    'placeholder:text-neutrals-600 bg-neutrals-916 px-6 py-3 border-neutrals-600',
+                    formState.errors.password && 'border-negative-600 placeholder:text-negative-600'
+                  )}
                 />
               </FormControl>
+              {formState.errors.password && <FormMessage className='text-negative-600'>{formState.errors.password.message}</FormMessage>}
             </FormItem>
           )}
         />
