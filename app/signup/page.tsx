@@ -5,7 +5,7 @@ import Link from 'next/link';
 import React from 'react';
 import { FaCheckCircle } from "react-icons/fa";
 
-const SignUpCard = ({ type }: { type: String }) => {
+const SignUpCard = ({ type }: { type: string }) => {
   const typeInfo = {
     "startup": [
       "Visibility boost",
@@ -31,7 +31,7 @@ const SignUpCard = ({ type }: { type: String }) => {
         <span className='text-3xl'>a {type}</span>
       </div>
       <div className='flex flex-col gap-6 my-6'>
-        {typeInfo[type].map((info: String[], index) => (
+        {typeInfo[type as keyof typeof typeInfo].map((info: string, index: number) => (
           <div key={index} className='flex gap-3'>
             <div className={cn(
               type === 'startup' && 'text-primary-600',
