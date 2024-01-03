@@ -1,17 +1,27 @@
+'use client';
+
+import { Button } from '@/components/ui/button';
 import React from 'react';
-import MainContentFilter from './MainContentFilter/MainContentFilter';
-import Map from './Map/Map';
+import MapView from './MapView';
+import TableView from './TableView';
 
 const MainContent = () => {
+  const [view, setView] = React.useState<'map' | 'table'>('map');
+
   return (
-    <div className='max-h-full w-7/12 flex flex-col'>
-      <div>
-        <MainContentFilter />
+    <>
+      <div className='pt-12 pb-32 bg-neutrals-950 flex justify-center items-center'>
+        <div className='rounded-full border border-primary-50 flex items-center p-1 gap-1'>
+          <Button className='rounded-full' variant={view === 'map' ? 'default' : 'ghost'} onClick={() => setView('map')}>
+            Map View
+          </Button>
+          <Button className='rounded-full' variant={view === 'table' ? 'default' : 'ghost'} onClick={() => setView('table')}>
+            Table View
+          </Button>
+        </div>
       </div>
-      <div className='mb-14 flex-1 mx-16 rounded-[32px]'>
-        <Map />
-      </div>
-    </div>
+      {view === 'map' ? <MapView /> : <TableView />}
+    </>
   );
 };
 
