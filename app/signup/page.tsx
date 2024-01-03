@@ -28,7 +28,7 @@ const SignUpCard = ({ type }: { type: string }) => {
     <div className='p-9 bg-neutrals-916 rounded-lg'>
       <div className='flex justify-center items-center gap-3 border-b border-neutrals-900 pb-6'>
         <Image src={`/icons/signup-${type}.svg`} alt='signup' width={50} height={50} />
-        <span className='text-3xl'>a {type}</span>
+        <span className='text-3xl'>{type === 'enabler' ? 'an' : 'a'} {type}</span>
       </div>
       <div className='flex flex-col gap-6 my-6'>
         {typeInfo[type as keyof typeof typeInfo].map((info: string, index: number) => (
