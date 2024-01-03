@@ -1,8 +1,7 @@
 import React from 'react';
-import Contact from '@/components/pages/EcosystemMapping/Contact/Contact';
 import Intro from '@/components/pages/EcosystemMapping/Intro/Intro';
 import MainContent from '@/components/pages/EcosystemMapping/MainContent/MainContent';
-import DataContextProvider from '@/context/DataContextProvider';
+import DataContextProvider from '@/contexts/DataContextProvider';
 
 const EcosystemMapping = () => {
   return (
@@ -11,7 +10,6 @@ const EcosystemMapping = () => {
       <DataContextProvider>
         <MainContent />
       </DataContextProvider>
-      <Contact />
     </>
   );
 };

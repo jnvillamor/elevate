@@ -2,7 +2,7 @@ import React from 'react';
 import MapViewCard from '../MapViewCard/MapViewCard';
 import Filter from '../Filter/Filter';
 import SearchBar from '../SearchBar/SearchBar';
-import { useMyContext } from '@/context/DataContextProvider';
+import { useMyContext } from '@/contexts/DataContextProvider';
 import SelectedFilter from '../SelectedFilter/SelectedFilter';
 
 const Result = () => {

@@ -6,7 +6,7 @@ import React from 'react';
 import { Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Button } from '@/components/ui/button';
 import Multiselect from '../CustomMultiselect/Multiselect';
-import { useMyContext } from '@/context/DataContextProvider';
+import { useMyContext } from '@/contexts/DataContextProvider';
 
 const Filter = () => {
   const { filters, setFilters, handleOpenFilter, getIndustries } = useMyContext();
@@ -19,10 +19,10 @@ const Filter = () => {
       ...filters,
       categories: selected,
       sort_by: sort_by
-    }
+    };
     setFilters({ type: 'whole_change', payload: newValue });
     handleOpenFilter();
-  }
+  };
 
   return (
     <div className='z-10 py-12 px-16 absolute top-0 w-full h-full bg-neutrals-932'>

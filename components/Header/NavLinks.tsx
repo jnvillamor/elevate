@@ -3,13 +3,11 @@
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { Button } from '../ui/button';
-import { usePathname } from 'next/navigation';
-import { UserAuth } from '@/app/context/AuthContext';
+import { UserAuth } from '@/contexts/AuthContext';
 
-const NavLinks = () => {
-  const pathname = usePathname().split('/');
-  const path = pathname[1] === undefined ? pathname[0] : pathname[1];
+type NavLinksProps = {path: string}
 
+const NavLinks = ({ path  }: NavLinksProps) => {
   const [loading, setLoading] = useState(true)
 
   const { user, googleSignIn, logOut } = UserAuth();
@@ -52,9 +50,10 @@ const NavLinks = () => {
       <Link href='/login'>
         <Button variant={path === 'login' ? 'default' : 'outline_rounded'}>Log In</Button>
       </Link>
+
       {!user ? null : (
         <Link href='/profile'>
-          <Button variant={pathname === '/profile' ? 'default' : 'outline_rounded'}>Profile</Button>
+          <Button variant={path === '/profile' ? 'default' : 'outline_rounded'}>Profile</Button>
         </Link>
       )}
 
@@ -67,7 +66,7 @@ const NavLinks = () => {
             Sign up
             </li> */}
             <Link href='/signup'>
-              <Button variant={pathname === '/signup' ? 'default' : 'outline_rounded'}>Sign Up</Button>
+              <Button variant={path === '/signup' ? 'default' : 'outline_rounded'}>Sign Up</Button>
             </Link>
           </ul>) : (
           <div>

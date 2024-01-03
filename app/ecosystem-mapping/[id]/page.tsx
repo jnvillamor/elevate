@@ -1,6 +1,6 @@
 'use client';
 
-import Contact from '@/components/pages/EcosystemMapping/Contact/Contact';
+import Contact from '@/components/Footer/Contact/Contact';
 import Map from '@/components/pages/EcosystemMapping/MainContent/Map/Map';
 import Awards from '@/components/pages/EntityDetails/Awards/Awards';
 import Certifications from '@/components/pages/EntityDetails/Certifications/Certifications';

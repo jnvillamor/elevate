@@ -1,4 +1,4 @@
-import { useMyContext } from '@/context/DataContextProvider';
+import { useMyContext } from '@/contexts/DataContextProvider';
 import React from 'react';
 
 const SelectedFilter = () => {

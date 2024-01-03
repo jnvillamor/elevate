@@ -2,7 +2,7 @@
 
 import { Button } from '@/components/ui/button';
 import React from 'react';
-import { useMyContext } from '@/context/DataContextProvider';
+import { useMyContext } from '@/contexts/DataContextProvider';
 
 const MapFilter = () => {
   const { filters, setFilters } = useMyContext();

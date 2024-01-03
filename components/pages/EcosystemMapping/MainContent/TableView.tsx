@@ -1,6 +1,6 @@
 import React from 'react';
 import SearchBar from './SearchBar/SearchBar';
-import { useMyContext } from '@/context/DataContextProvider';
+import { useMyContext } from '@/contexts/DataContextProvider';
 import MapFilter from './MapFillter/MapFilter';
 import SelectedFilter from './SelectedFilter/SelectedFilter';
 import TableViewCard from './TableViewCard/TableViewCard';

@@ -4,7 +4,7 @@ import Map from './Map/Map';
 import MapFilter from './MapFillter/MapFilter';
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
-import { useMyContext } from '@/context/DataContextProvider';
+import { useMyContext } from '@/contexts/DataContextProvider';
 
 const MapView = () => {
   const { data } = useMyContext();

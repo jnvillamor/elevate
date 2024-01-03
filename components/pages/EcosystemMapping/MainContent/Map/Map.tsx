@@ -1,7 +1,7 @@
 'use client';
 
 import { Startup } from '@/common';
-import { useMyContext } from '@/context/DataContextProvider';
+import { useMyContext } from '@/contexts/DataContextProvider';
 import { Loader } from '@googlemaps/js-api-loader';
 import { useEffect, useRef } from 'react';
 
@@ -66,8 +66,8 @@ const Map = ({ startup }: MapProps) => {
           });
         });
       } else {
-        map.setCenter(startup.coords)
-        
+        map.setCenter(startup.coords);
+
         const marker = new google.maps.Marker({
           position: {
             lat: startup.coords.lat,
