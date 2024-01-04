@@ -38,10 +38,10 @@ const SignupForm = ({ type }: { type: 'Startup' | 'Enabler' }) => {
     }
   });
 
-  const onSubmit = (values: z.infer<typeof formSchema>) => {
+  const onSubmit = async (values: z.infer<typeof formSchema>) => {
     const { email, password } = values;
 
-    createUserWithEmailAndPassword(auth, email, password)
+    await createUserWithEmailAndPassword(auth, email, password)
       .then(async (userCredential) => {
         if (userCredential.user) {
           const result = await signIn('credentials', { email, password, callbackUrl: '/' });
