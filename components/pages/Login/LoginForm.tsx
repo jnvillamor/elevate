@@ -4,6 +4,7 @@ import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '
 import { Input } from '@/components/ui/input';
 import { cn } from '@/lib/utils';
 import { zodResolver } from '@hookform/resolvers/zod';
+import { signIn } from 'next-auth/react';
 import Link from 'next/link';
 import React from 'react';
 import { useForm } from 'react-hook-form';
@@ -13,7 +14,7 @@ const formSchema = z.object({
   email: z.string().email({ message: 'Please enter a valid email' }),
   password: z
     .string()
-    .min(8, {
+    .min(3, {
       message: 'Password must be at least 8 characters long'
     })
     .max(32, {
@@ -31,7 +32,8 @@ const LoginForm = () => {
   });
 
   const onSubmit = (values: z.infer<typeof formSchema>) => {
-    console.log(values);
+    const { email, password } = values;
+    signIn('credentials', { email, password, redirect: true, callbackUrl: '/' });
   };
 
   return (
@@ -84,9 +86,14 @@ const LoginForm = () => {
             Forgot Password?
           </Link>
         </div>
-        <Button type='submit' className='px-6 py-3 h-full w-full my-12 bg-primary-600 text-neutral-50 text-2xl'>
-          Log In
-        </Button>
+        <FormField
+          name='submit'
+          render={({ formState }) => (
+            <Button type='submit' className='px-6 py-3 h-full w-full my-12 bg-primary-600 text-neutral-50 text-2xl' disabled={!formState.isValid || formState.isSubmitting}>
+              Log In
+            </Button>
+          )}
+        />
       </form>
     </Form>
   );

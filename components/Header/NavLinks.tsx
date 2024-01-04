@@ -1,13 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { Button } from '../ui/button';
-import { UserAuth } from '@/contexts/AuthContext';
+import { useSession } from 'next-auth/react';
 
 type NavLinksProps = { path: string };
 
 const NavLinks = ({ path }: NavLinksProps) => {
-
-  const { user } = UserAuth();
+  const session = useSession();
 
   return (
     <div className='flex items-center gap-6'>
@@ -21,13 +20,13 @@ const NavLinks = ({ path }: NavLinksProps) => {
         <Button variant={path === 'contact' ? 'default' : 'outline_rounded'}>Contact</Button>
       </Link>
 
-      {user && (
+      {session.status === 'authenticated' && (
         <Link href='/profile'>
           <Button variant={path === 'profile' ? 'default' : 'outline_rounded'}>Profile</Button>
         </Link>
       )}
 
-      {!user && (
+      {session.status === 'unauthenticated' && (
         <>
           <Link href='/login'>
             <Button variant='outline_rounded'>Log In</Button>
