@@ -1,5 +1,5 @@
 import { auth } from "@/firebase";
-import { signInWithEmailAndPassword } from "firebase/auth";
+import { AuthError, signInWithEmailAndPassword } from "firebase/auth";
 import type { NextAuthOptions } from "next-auth";
 import CredentialsProvider  from "next-auth/providers/credentials";
 
@@ -12,13 +12,20 @@ export const options: NextAuthOptions = {
         password: { label: "Password", type: "password"}
       },
       async authorize(credentials): Promise<any> {
-        return await signInWithEmailAndPassword(auth, (credentials as any).email, (credentials as any).password)
-          .then(userCredential => {
-            if (userCredential.user)
-              return userCredential.user;
-            return null;
-          })
-          .catch( error => console.log(error))
+        try {
+          const userCredential = await signInWithEmailAndPassword(auth, (credentials as any).email, (credentials as any).password);
+
+          return Promise.resolve(userCredential.user);
+        }
+        catch( error: any ) {
+          if( error.code === 'auth/invalid-credential') {
+            error.message = "Invalid email or password";
+            throw error;
+          } else {
+            error.message = "Something went wrong";
+            throw error;
+          }
+        }
       }
     })
   ],

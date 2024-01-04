@@ -12,7 +12,7 @@ const Login = () => {
         </Link>
         <Image src='/icons/login-hero.svg' width={500} height={1000} alt='hero' className='w-full h-full'/>
       </div>
-      <div className='flex flex-grow justify-center items-center'>
+      <div className='flex flex-grow justify-center items-center relative'>
         <div className='w-1/2'>
           <h1 className='font-product_sans text-4xl text-center'>Log In</h1>
           <LoginForm />
