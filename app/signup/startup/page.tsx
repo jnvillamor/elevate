@@ -1,4 +1,4 @@
-import StartupForm from '@/components/pages/Signup/Startup/StartupForm';
+import SignupForm from '@/components/pages/Signup/SignupForm';
 import { Button } from '@/components/ui/button';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -20,7 +20,7 @@ const signup_as_startup = () => {
       <div className='h-screen flex justify-center items-center flex-1'>
         <div className='w-1/2'>
           <p className='text-5xl text-center'>Sign Up as a Startup</p>
-          <StartupForm />
+          <SignupForm type='Startup' />
           <Link href='/signup/enabler'>
             <Button className='px-6 py-3 w-full text-2xl h-full'>I&apos;m an investing enabler</Button>
           </Link>

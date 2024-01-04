@@ -1,4 +1,4 @@
-import EnablerForm from '@/components/pages/Signup/Enabler/EnablerForm';
+import SignupForm from '@/components/pages/Signup/SignupForm';
 import { Button } from '@/components/ui/button';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -14,7 +14,7 @@ const signup_as_enabler = () => {
         </Link>
         <div className='w-1/2'>
           <p className='text-5xl text-center'>Sign Up as an Enabler</p>
-          <EnablerForm />
+          <SignupForm type='Enabler' /> 
           <Link href='/signup/startup'>
             <Button className='px-6 py-3 w-full text-2xl h-full'>I&apos;m an expanding startup</Button>
           </Link>

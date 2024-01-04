@@ -51,7 +51,7 @@ const SignUpCard = ({ type }: { type: string }) => {
   );
 };
 
-const signup = () => {
+const Signup = () => {
   const userTypes = ['startup', 'enabler', 'visitor'];
 
   return (
@@ -68,4 +68,4 @@ const signup = () => {
   );
 };
 
-export default signup;
+export default Signup;
