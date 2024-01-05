@@ -38,7 +38,7 @@ const Footer = () => {
   const pathname = usePathname().split('/');
   const path = pathname[1] === undefined ? pathname[0] : pathname[1];
 
-  if (path === 'login' || path === 'signup') return null;
+  if (path === 'login' || path === 'signup' || path === 'onboarding' ) return null;
 
   return (
     <footer>
