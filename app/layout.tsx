@@ -5,6 +5,7 @@ import Header from '@/components/Header/Header';
 import Footer from '@/components/Footer/Footer';
 import { getServerSession } from 'next-auth';
 import { options } from './api/auth/[...nextauth]/options.';
+import { Toaster } from '@/components/ui/toaster';
 
 export const metadata: Metadata = {
   title: 'Elevate',
@@ -21,6 +22,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
           <Header />
           {children}
           <Footer />
+          <Toaster />
         </SessionProvider>
       </body>
     </html>
