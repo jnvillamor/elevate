@@ -12,7 +12,7 @@ const PhotoForm = () => {
 
   return (
     <>
-      <div className='w-full p-6 bg-neutrals-932 rounded-md my-24'>
+      <div className='w-3/4 m-auto p-6 bg-neutrals-932 rounded-md my-24'>
         {/* Avatar */}
         <div className='w-full mb-6'>
           <div className='bg-neutrals-916 w-full aspect-square'>
