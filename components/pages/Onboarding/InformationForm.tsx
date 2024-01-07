@@ -1,4 +1,5 @@
 import React from 'react';
+import { Autocomplete, LoadScript } from '@react-google-maps/api';
 import { FormItem, FormLabel } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
 import { Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
@@ -8,6 +9,7 @@ const InformationForm = () => {
   const { register, getValues, setValue, formState } = useFormContext();
   const [selectValue, setSelectValue] = React.useState<string>(getValues('industry'));
   const [foundingYear, setFoundingYear] = React.useState<string>(getValues('founded'));
+  const [autocomplete, setAutocomplete] = React.useState<any>(null);
   const OPTIONS = ['Transportation', 'Food Industry', 'Consulting', 'Food Service', 'Agriculture'];
 
   const handleChage = (field: string, value: string) => {
@@ -26,6 +28,13 @@ const InformationForm = () => {
 
     return years;
   };
+
+  const handlePlaceChanged = () => {
+    const place = autocomplete.getPlace();
+    const lat = place.geometry?.location.lat();
+    const lng = place.geometry?.location.lng();
+    setValue('coords', { lat, lng });
+  }
 
   return (
     <>
@@ -79,8 +88,6 @@ const InformationForm = () => {
           <Input
             type='number'
             id='employees'
-            min={1}
-            defaultValue={1}
             className='placeholder:text-neutrals-600 focus:border-primary-600 focus-visible:ring-0 bg-neutrals-916 px-12 py-3 border-neutrals-300 text-lg text-neutrals-50'
             {...register('employees')}
           />
@@ -89,13 +96,17 @@ const InformationForm = () => {
 
         <FormItem className='w-full mb-12'>
           <FormLabel className='text-lg mb-3'>Address</FormLabel>
-          <Input
-            type='string'
-            id='address'
-            placeholder='Enter your address'
-            className='placeholder:text-neutrals-600 focus:border-primary-600 focus-visible:ring-0 bg-neutrals-916 px-12 py-3 border-neutrals-300 text-lg text-neutrals-50'
-            {...register('location')}
-          />
+          <LoadScript googleMapsApiKey={process.env.NEXT_PUBLIC_GOOGLE_MAPS_KEY as string} libraries={['places']}>
+            <Autocomplete restrictions={{ country: "PH"}} onLoad={(autocomplete) => setAutocomplete(autocomplete)} onPlaceChanged={handlePlaceChanged} >
+              <Input
+                type='string'
+                id='location'
+                placeholder='Enter your address'
+                className='placeholder:text-neutrals-600 focus:border-primary-600 focus-visible:ring-0 bg-neutrals-916 px-12 py-3 border-neutrals-300 text-lg text-neutrals-50'
+                {...register('location')}
+              />
+            </Autocomplete>
+          </LoadScript>
           {formState.errors.location && <p className='text-negative-600'>{formState.errors.location?.message as string}</p>}
         </FormItem>
       </div>

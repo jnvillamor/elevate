@@ -1,6 +1,6 @@
-import { auth } from "@/firebase";
-import { AuthError, signInWithEmailAndPassword } from "firebase/auth";
 import type { NextAuthOptions } from "next-auth";
+import { auth } from "@/firebase";
+import { signInWithEmailAndPassword } from "firebase/auth";
 import CredentialsProvider  from "next-auth/providers/credentials";
 
 export const options: NextAuthOptions = {
@@ -14,7 +14,6 @@ export const options: NextAuthOptions = {
       async authorize(credentials): Promise<any> {
         try {
           const userCredential = await signInWithEmailAndPassword(auth, (credentials as any).email, (credentials as any).password);
-
           return Promise.resolve(userCredential.user);
         }
         catch( error: any ) {

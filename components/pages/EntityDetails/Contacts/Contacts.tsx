@@ -3,7 +3,7 @@ import React from 'react';
 import { FaFacebookSquare, FaInstagramSquare, FaLink, FaLinkedin } from 'react-icons/fa';
 
 type ContactsProps = {
-  contacts: {
+  contacts?: {
     website?: string;
     facebook?: string;
     linkedin?: string;

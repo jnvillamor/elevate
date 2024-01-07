@@ -1,12 +1,20 @@
 'use client';
 
 import { Startup } from '@/common';
-import { useMyContext } from '@/contexts/DataContextProvider';
 import { Loader } from '@googlemaps/js-api-loader';
 import { useEffect, useRef } from 'react';
 
+type MapEntry = {
+  name: string;
+  type: Startup['type'];
+  coords: {
+    lat: number;
+    lng: number;
+  };
+};
+
 type MapProps = {
-  startup: Startup | Startup[];
+  startup: MapEntry | MapEntry[];
 };
 
 const Map = ({ startup }: MapProps) => {

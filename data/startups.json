@@ -11,7 +11,7 @@
     },
     "founded": "2015",
     "image": "/images/startup-1.png",
-    "employees": 123,
+    "employees": "123",
     "about": "Anskee is an innovative enterprise based in Davao, Philippines, founded in 2019 with a focus on enhancing urban commuting through technology. They have developed a waiting shelter equipped with an internet communication system and an earthquake monitoring and warning system. This product is designed to aid urban planners, city managers, and decision-makers by providing essential urban green space, which not only improves the quality of urban settings but also bolsters local resilience. Anskee aims to promote sustainable lifestyles and improve the health and well-being of urban residents by integrating multifunctionality and data-driven infrastructure into the fabric of city living. Their efforts contribute to the advancement of smart cities, urban planning, green technology, and urban mobility. Through social enterprise, they strive to make a positive impact on society by addressing transportation challenges with innovative solutions.",
     "contacts": {
       "website": "https://google.com",
@@ -22,26 +22,26 @@
     "awards": [
       {
         "title": "Innovation Trailblazer Award",
-        "year_awarded": 2023
+        "year_awarded": "2023"
       },
       {
         "title": "Social Impact Champion Award",
-        "year_awarded": 2023
+        "year_awarded": "2023"
       },
       {
         "title": "Customer Experience Excellence Award",
-        "year_awarded": 2020
+        "year_awarded": "2020"
       }
     ],
     "certifications": [
       {
         "title": "Innovator's Excellence Certification",
-        "year_awarded": 2023,
+        "year_awarded": "2023",
         "description": "Awarded to individuals demonstrating outstanding innovation and creative thinking within the Anskee ecosystem. Recognizes a commitment to pushing boundaries and finding unique solutions."
       },
       {
         "title": "Strategic Visionary Credential",
-        "year_awarded": 2023,
+        "year_awarded": "2023",
         "description": "Acknowledges individuals who have exhibited exceptional strategic vision in shaping Anskee's future. This certification highlights the recipient's ability to foresee opportunities and challenges."
       }
     ]
@@ -58,7 +58,7 @@
     },
     "founded": "2020",
     "image": "/images/startup-2.png",
-    "employees": 123,
+    "employees": "123",
     "about": "",
     "contacts": {
       "website": "https://google.com",
@@ -81,7 +81,7 @@
     },
     "founded": "2015",
     "image": "/images/startup-3.png",
-    "employees": 123,
+    "employees": "123",
     "about": "",
     "contacts": {
       "website": "https://google.com",
@@ -104,7 +104,7 @@
     },
     "founded": "2020",
     "image": "/images/startup-4.png",
-    "employees": 123,
+    "employees": "123",
     "about": "",
     "contacts": {
       "website": "https://google.com",
@@ -127,7 +127,7 @@
     },
     "founded": "2019",
     "image": "/images/startup-5.png",
-    "employees": 123,
+    "employees": "123",
     "about": "",
     "contacts": {
       "website": "https://google.com",

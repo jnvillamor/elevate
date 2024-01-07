@@ -1,11 +1,11 @@
 type Awards = {
   title: string;
-  year_awarded: number;
+  year_awarded: string;
 };
 
 type Certifications = {
   title: string;
-  year_awarded: number;
+  year_awarded: string;
   description: string;
 };
 
@@ -22,7 +22,7 @@ export type Startup = {
   founded: string;
   image: string;
   about: string;
-  employees: number;
+  employees: string;
   contacts: {
     website?: string;
     facebook?: string;
