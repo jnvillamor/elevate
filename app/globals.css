@@ -159,4 +159,9 @@
   .horizontal__bar::-webkit-scrollbar {
     height: 8px;
   }
+
+  .step__item:not(:first-child)::before {
+    @apply content-[''] absolute bg-neutrals-916 w-full h-1 right-1/2 top-1/3 -translate-y-2/4
+  }
+  
 }
