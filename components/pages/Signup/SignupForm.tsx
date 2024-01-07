@@ -9,7 +9,7 @@ import { cn } from '@/lib/utils';
 import Link from 'next/link';
 
 const SignupForm = ({ type }: { type: 'Startup' | 'Enabler' }) => {
-  const { form, submit, isSubmitting, isValid, errors } = useSignupForm();
+  const { form, submit, isSubmitting, isValid, errors } = useSignupForm({ type: type });
 
   return (
     <Form {...form}>

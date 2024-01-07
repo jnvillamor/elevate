@@ -1,31 +1,16 @@
-import { auth } from '@/firebase';
+import { auth, db } from '@/firebase';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { signIn } from 'next-auth/react';
-import React from 'react';
 import { useForm } from 'react-hook-form';
-import { z } from 'zod';
 import useShowError from './useShowError';
+import { addDoc, collection } from 'firebase/firestore';
+import { SignUpFormValues, SignUpSchema } from '@/common/schema';
 
-const formSchema = z
-  .object({
-    name: z.string().min(3, { message: 'Name must be at least 3 characters long' }),
-    email: z.string().email({ message: 'Invalid email address' }),
-    password: z.string().min(8, { message: 'Password must be at least 8 characters long' }),
-    agreeTerms: z.boolean().refine((val) => val === true, { message: 'You must agree to the terms and conditions' }),
-    confirmPassword: z.string().min(8, {
-      message: 'Password must be at least 8 characters long'
-    })
-  })
-  .refine((data) => data.password === data.confirmPassword, {
-    message: 'Passwords do not match',
-    path: ['confirmPassword']
-  });
-
-const useSignupForm = () => {
+const useSignupForm = ({ type }: { type: string }) => {
   const { showError } = useShowError();
-  const form = useForm<z.infer<typeof formSchema>>({
-    resolver: zodResolver(formSchema),
+  const form = useForm<SignUpFormValues>({
+    resolver: zodResolver(SignUpSchema),
     defaultValues: {
       name: '',
       email: '',
@@ -36,15 +21,32 @@ const useSignupForm = () => {
     mode: 'onBlur'
   });
 
-  const submit = form.handleSubmit(async ({ email, password }) => {
+  const addUserInformation = async (user: any, name: string) => {
+    console.log('Adding user information')
+    const data = {
+      owner: user.email,
+      name: name
+    };
+
+    const docRef = await addDoc(collection(db, type), data);
+    console.log('Document written with ID: ', docRef.id);
+    return docRef;
+  };
+
+  const submit = form.handleSubmit(async ({ email, password, name }) => {
     try {
       await createUserWithEmailAndPassword(auth, email, password).then(async (userCredential) => {
         if (userCredential.user) {
-          const result = await signIn('credentials', { email, password, callbackUrl: '/onboarding' });
+          const result = await signIn('credentials', { email, password, redirect: false, callbackUrl: '/onboarding' });
 
           if (result?.error) {
             showError('Error', result.error);
-          } else if (result?.url) window.location.href = result.url;
+          } else if (result?.url) {
+            console.log('User signed in');
+            // Add the user to the database
+            const documentID = await addUserInformation(userCredential.user, name);
+            window.location.href = `${result.url}?documentID=${documentID.id}&type=${type}`;
+          }
         }
       });
     } catch (error: any) {

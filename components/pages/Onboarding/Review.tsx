@@ -4,10 +4,8 @@ import Map from '@/components/pages/EcosystemMapping/MainContent/Map/Map';
 import Contacts from '@/components/pages/EntityDetails/Contacts/Contacts';
 import Details from '@/components/pages/EntityDetails/Details/Details';
 import Image from 'next/image';
-import Link from 'next/link';
 import React from 'react';
 import { useFormContext } from 'react-hook-form';
-import { FaAngleLeft } from 'react-icons/fa';
 
 const StartupDetails = () => {
   const { getValues } = useFormContext();
