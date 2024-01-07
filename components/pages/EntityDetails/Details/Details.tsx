@@ -6,7 +6,7 @@ type DetailsProps = {
   startup: {
     industry: string;
     founded: string;
-    employees: number;
+    employees: string;
     location: string;
   };
 };

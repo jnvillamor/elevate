@@ -3,7 +3,7 @@ import React from 'react';
 type CertificationsProps = {
   certifications: {
     title: string;
-    year_awarded: number;
+    year_awarded: string;
     description: string;
   }[];
 };
