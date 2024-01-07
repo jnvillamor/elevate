@@ -1,10 +1,13 @@
 import { Button } from '@/components/ui/button';
+import { FormMessage } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
 import usePhotoForm from '@/hooks/usePhotoForm';
 import Image from 'next/image';
+import { useFormContext } from 'react-hook-form';
 import { IoCameraOutline } from 'react-icons/io5';
 
 const PhotoForm = () => {
+  const { formState } = useFormContext();
   const { fileUrl, fileUploadRef, isFetching, uploadFile } = usePhotoForm();
 
   return (
@@ -16,6 +19,7 @@ const PhotoForm = () => {
             {fileUrl && <Image src={fileUrl} alt='Avatar' height={200} width={200} className='w-full h-full' />}
             {isFetching && <div className='w-full h-full flex justify-center items-center'>Loading...</div>}
           </div>
+          {formState.errors.image && <FormMessage className='text-negative-600'>{formState.errors.image?.message as string}</FormMessage>}
         </div>
 
         {/* Upload */}

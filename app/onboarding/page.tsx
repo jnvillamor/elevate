@@ -4,6 +4,7 @@ import PhotoForm from '@/components/pages/Onboarding/PhotoForm';
 import { Button } from '@/components/ui/button';
 import { Form } from '@/components/ui/form';
 import { cn } from '@/lib/utils';
+import { zodResolver } from '@hookform/resolvers/zod';
 import React from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
 import { LiaAngleLeftSolid, LiaAngleRightSolid } from 'react-icons/lia';
@@ -38,6 +39,7 @@ const Onboarding = () => {
   const [currentStep, setCurrentStep] = React.useState<number>(0);
   const STEPS = ['Photo', 'Information', 'Review'];
   const form = useForm<z.infer<typeof OnboardingSchema>>({
+    resolver: zodResolver(OnboardingSchema),
     defaultValues: {
       type: '',
       name: '',
@@ -52,9 +54,9 @@ const Onboarding = () => {
   const nextStep = () => {
     if (currentStep === STEPS.length - 1) return;
 
-    if(currentStep === 0) {
+    if (currentStep === 0) {
       form.trigger("image").then((isValid) => {
-        console.log(isValid);
+        if(isValid) setCurrentStep((prev) => prev + 1);
       });
     }
   };
@@ -66,13 +68,13 @@ const Onboarding = () => {
   }
 
   return (
-    <div className='h-screen bg-neutrals-950 flex justify-center items-center'>
+    <div className='min-h-screen bg-neutrals-950 flex justify-center items-center'>
       <FormProvider {...form}>
-        <form className='max-w-md w-full' >
+        <form className='max-w-md w-full py-24' >
           <h1 className='font-product_sans text-4xl text-center mb-9'>Create a Profile</h1>
 
           {/* Stepper */}
-          <div className='flex justify-between relative'>
+          <div className='flex justify-between'>
             {STEPS.map((step, i) => (
               <div key={i} className='relative flex-grow flex flex-col gap-3 justify-center items-center step__item'>
                 <div
@@ -95,7 +97,7 @@ const Onboarding = () => {
               <LiaAngleLeftSolid size={24} className='mr-2' />
               Back
             </Button>
-            <Button type='button' onClick={nextStep}  className='pl-8 pr-6 py-3 rounded-sm text-xl h-full text-neutrals-50 bg-primary-600 flex justify-center'>
+            <Button type='button' onClick={nextStep} className='pl-8 pr-6 py-3 rounded-sm text-xl h-full text-neutrals-50 bg-primary-600 flex justify-center'>
               Next
               <LiaAngleRightSolid size={24} className='ml-2' />
             </Button>
