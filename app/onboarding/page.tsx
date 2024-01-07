@@ -4,7 +4,7 @@ import InformationForm from '@/components/pages/Onboarding/InformationForm';
 import PhotoForm from '@/components/pages/Onboarding/PhotoForm';
 import { Button } from '@/components/ui/button';
 import { zodResolver } from '@hookform/resolvers/zod';
-import React, { useEffect } from 'react';
+import React from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
 import { LiaAngleLeftSolid, LiaAngleRightSolid } from 'react-icons/lia';
 import { z } from 'zod';
@@ -12,6 +12,9 @@ import { TbLetterX } from 'react-icons/tb';
 import Stepper from '@/components/pages/Onboarding/Stepper';
 import Review from '@/components/pages/Onboarding/Review';
 import { useSearchParams } from 'next/navigation';
+import { collection, addDoc } from 'firebase/firestore';
+import { db } from '@/firebase';
+import { useSession } from 'next-auth/react';
 
 const OnboardingSchema = z.object({
   type: z.string().min(1, {
@@ -51,6 +54,13 @@ const fieldToCheck: Record<number, (keyof z.infer<typeof OnboardingSchema>)[]> =
 };
 
 const Onboarding = () => {
+  const { data } = useSession({
+    required: true,
+    onUnauthenticated() {
+      window.location.href = '/signup';
+    }
+  });
+  
   const searchParams = useSearchParams();
   const [currentStep, setCurrentStep] = React.useState<number>(0);
   const STEPS = ['Photo', 'Information', 'Review'];
@@ -85,9 +95,16 @@ const Onboarding = () => {
     }
   };
 
-  const handleSubmit = (data: z.infer<typeof OnboardingSchema>) => {
-
-  }
+  const handleSubmit = form.handleSubmit( async (data) => {
+    try {
+      const docRef = await addDoc(collection(db, data.type), data);
+      console.log("Document written with ID: ", docRef.id);
+    }
+    catch (error) {
+      console.log(error);
+    }
+    
+  })
   
   const prevStep = () => {
     if (currentStep === 0) return;
@@ -147,8 +164,8 @@ const Onboarding = () => {
                 Back
               </Button>
                 <Button
-                  type='button'
-                  onClick={nextStep}
+                  type='submit'
+                  onClick={handleSubmit}
                   className='pl-8 pr-6 py-3 rounded-sm text-xl h-full text-neutrals-50 bg-primary-600 flex justify-center'>
                   Done
                   <LiaAngleRightSolid size={24} className='ml-2' />
