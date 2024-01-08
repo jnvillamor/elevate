@@ -11,7 +11,7 @@ type Certifications = {
 };
 
 export type Startup = {
-  id: number;
+  id: string;
   type: 'Startup' | 'Enabler';
   name: string;
   industry: string;

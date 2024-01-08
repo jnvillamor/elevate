@@ -3,7 +3,7 @@
 import { Filters, Startup } from '@/common';
 import useFilter from '@/hooks/useFilter';
 import useGetData from '@/hooks/useGetData';
-import { FC, ReactNode, createContext, useContext, useEffect, useReducer } from 'react';
+import { FC, ReactNode, createContext, useContext, useEffect } from 'react';
 
 interface DataContextType {
   data: Startup[];

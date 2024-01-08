@@ -17,7 +17,7 @@ const Result = () => {
         <SelectedFilter />
       </div>
       <div className='overflow-auto flex-1 mb-14'>
-        {data.map((startup) => (
+        {data?.map((startup) => (
           <MapViewCard key={startup.name} {...startup} />
         ))}
       </div>

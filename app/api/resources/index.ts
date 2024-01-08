@@ -1,6 +1,6 @@
 import { Startup } from "@/common";
 import { db } from "@/firebase"
-import { collection, doc, getDoc, getDocs, query, updateDoc, where } from "firebase/firestore"
+import { collection, doc, getDocs, query, updateDoc, where } from "firebase/firestore"
 
 export const getDocRefById = async (collection: string, id: string) => {
   const docRef = doc(db, `${collection}/${id}`);
@@ -33,4 +33,17 @@ export const getDocRefByPath = (collection: string, path: string) => {
 export const updateDocByRef = async (collection: string, id: string, data: any) => {
   const docRef = await getDocRefById(collection, id);
   await updateDoc(docRef, data);
+}
+
+export const getAllDocs = async (collection: string) => {
+  const collectionRef = getCollectionRef(collection);
+  const querySnapshot = await getDocs(collectionRef);
+
+  const result = querySnapshot.docs.map(doc => {
+    const data = doc.data();
+    const id = doc.id;
+    return { id, ...data } as Startup;
+  });
+
+  return result;
 }

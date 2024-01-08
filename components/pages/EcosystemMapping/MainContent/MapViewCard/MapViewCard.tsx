@@ -8,8 +8,10 @@ const MapViewCard = (startup: Startup) => {
   return (
     <Card className='mx-16 bg-neutrals-916 border border-neutrals-300 mb-6'>
       <CardContent className='p-6 flex gap-10 text-neutrals-50'>
-        <Image src={startup.image} alt='Logo' width={160} height={160} />
-        <div className='flex flex-col justify-between'>
+        <div className='w-1/3 border'>
+        <Image src={startup.image} alt='Logo' width={160} height={160} className='h-full w-full' />
+        </div>
+        <div className='w-2/3 flex flex-col justify-between'>
           <CardTitle>{startup.name}</CardTitle>
           <div>
             <div className='flex gap-1'>

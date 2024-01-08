@@ -1,6 +1,6 @@
 [
   {
-    "id": 1,
+    "id": "1",
     "type": "Startup",
     "name": "Anskee",
     "industry": "Transportation",
@@ -47,7 +47,7 @@
     ]
   },
   {
-    "id": 2,
+    "id": "2",
     "type": "Startup",
     "name": "Peding's Cafe",
     "industry": "Food industry",
@@ -70,7 +70,7 @@
     "certifications": []
   },
   {
-    "id": 3,
+    "id": "3",
     "type": "Enabler",
     "name": "Virtualahan Inc.",
     "industry": "Consulting",
@@ -93,7 +93,7 @@
     "certifications": []
   },
   {
-    "id": 4,
+    "id": "4",
     "type": "Enabler",
     "name": "Green Habits Agriventure, Inc.",
     "industry": "Food Service",
@@ -116,7 +116,7 @@
     "certifications": []
   },
   {
-    "id": 5,
+    "id": "5",
     "type": "Startup",
     "name": "Project Mocapp",
     "industry": "Agriculture",

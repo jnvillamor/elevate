@@ -11,7 +11,7 @@ import { TfiAngleDoubleRight } from 'react-icons/tfi';
 import { TfiAngleRight } from 'react-icons/tfi';
 
 const TableView = () => {
-  const { handleOpenFilter, setFilters, openFilter, filters, data } = useMyContext();
+  const { handleOpenFilter, data } = useMyContext();
 
   return (
     <div className='bg-neutrals-950'>
