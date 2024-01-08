@@ -8,7 +8,6 @@ import { useMyContext } from '@/contexts/DataContextProvider';
 
 const MapView = () => {
   const { data } = useMyContext();
-
   return (
     <div className='flex'>
       <div className='max-h-screen h-screen w-5/12 bg-neutrals-932'>

@@ -4,9 +4,14 @@ import Filter from '../Filter/Filter';
 import SearchBar from '../SearchBar/SearchBar';
 import { useMyContext } from '@/contexts/DataContextProvider';
 import SelectedFilter from '../SelectedFilter/SelectedFilter';
+import ResultSkeleton from './ResultSkeleton';
 
 const Result = () => {
-  const { data, openFilter, handleOpenFilter } = useMyContext();
+  const { data, openFilter, isFetching, handleOpenFilter } = useMyContext();
+
+  if (isFetching) {
+    return <ResultSkeleton />;
+  }
 
   return (
     <div className='h-full flex flex-col relative'>

@@ -9,6 +9,7 @@ interface DataContextType {
   data: Startup[];
   filters: Filters;
   openFilter: boolean;
+  isFetching: boolean;
   handleOpenFilter: () => void;
   setFilters: React.Dispatch<any>;
   filterData: (filters: Filters) => void;
@@ -22,7 +23,7 @@ interface DataContextProviderProps {
 }
 
 const DataContextProvider: FC<DataContextProviderProps> = ({ children }) => {
-  const { filteredData: data, filterData, getIndustries } = useGetData();
+  const { filteredData: data, isFetching, filterData, getIndustries } = useGetData();
   const { filters, dispatch: setFilters, openFilter, handleOpenFilter } = useFilter();
 
   useEffect(() => {
@@ -37,6 +38,7 @@ const DataContextProvider: FC<DataContextProviderProps> = ({ children }) => {
     data,
     filters,
     openFilter,
+    isFetching,
     handleOpenFilter,
     setFilters,
     filterData,

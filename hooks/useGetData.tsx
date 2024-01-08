@@ -6,6 +6,7 @@ import { getAllDocs } from '@/app/api/resources';
 const useGetData = () => {
   const [mainData, setMainData] = React.useState<Startup[]>([]);
   const [filteredData, setFilteredData] = React.useState(mainData);
+  const [isFetching, setIsFetching] = React.useState(false);
 
   const filterData = (filters: Filters) => {
     const { sort_by, categories } = filters;
@@ -71,10 +72,16 @@ const useGetData = () => {
   };
 
   useEffect(() => {
-    getAllEntities();
+    setIsFetching(true);
+    const fetchData = async () => {
+      await getAllEntities();
+      setIsFetching(false);
+    }
+
+    fetchData();
   }, []);
 
-  return { filteredData, filterData, getIndustries, getStartup };
+  return { filteredData, isFetching, filterData, getIndustries, getStartup };
 };
 
 export default useGetData;
