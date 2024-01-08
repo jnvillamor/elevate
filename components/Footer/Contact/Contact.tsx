@@ -1,5 +1,6 @@
 import { Button } from '@/components/ui/button';
 import { useSession } from 'next-auth/react';
+import Link from 'next/link';
 import React from 'react';
 
 const Contact = () => {
@@ -27,16 +28,20 @@ const Contact = () => {
       </div>
       <div className='w-1/4'>
         <h1 className='text-[60px] font-test_staff_x font-bold'>I AM...</h1>
-        <Button
-          variant='outline'
-          className='border-primary-500 text-primary-500 w-full py-16 mb-6 flex flex-col leading-none font-test_staff text-3xl font-normal hover:bg-primary-300 hover:text-neutral-950'>
-          <span>Expanding</span> <span>Startup</span>
-        </Button>
-        <Button
-          variant='outline'
-          className='border-primary-500 text-primary-500 w-full py-16 flex flex-col leading-none font-normal font-test_staff text-3xl hover:bg-primary-300 hover:text-neutral-950'>
-          <span>Investment</span> <span>Enabler</span>
-        </Button>
+        <Link href='/signup/startup'>
+          <Button
+            variant='outline'
+            className='border-primary-500 text-primary-500 w-full py-16 mb-6 flex flex-col leading-none font-test_staff text-3xl font-normal hover:bg-primary-300 hover:text-neutral-950'>
+            <span>Expanding</span> <span>Startup</span>
+          </Button>
+        </Link>
+        <Link href='/signup/investor'>
+          <Button
+            variant='outline'
+            className='border-primary-500 text-primary-500 w-full py-16 flex flex-col leading-none font-normal font-test_staff text-3xl hover:bg-primary-300 hover:text-neutral-950'>
+            <span>Investment</span> <span>Enabler</span>
+          </Button>
+        </Link>
       </div>
     </div>
   );

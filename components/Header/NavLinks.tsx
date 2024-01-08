@@ -1,7 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
 import { Button } from '../ui/button';
-import { useSession } from 'next-auth/react';
+import { signOut, useSession } from 'next-auth/react';
 
 type NavLinksProps = { path: string };
 
@@ -21,9 +21,14 @@ const NavLinks = ({ path }: NavLinksProps) => {
       </Link>
 
       {session.status === 'authenticated' && (
-        <Link href='/profile'>
-          <Button variant={path === 'profile' ? 'default' : 'outline_rounded'}>Profile</Button>
-        </Link>
+        <>
+          <Link href='/profile'>
+            <Button variant={path === 'profile' ? 'default' : 'outline_rounded'}>Profile</Button>
+          </Link>
+          <Button variant='ghost' className='rounded-full hover:bg-negative-400 hover:text-neutrals-50' onClick={() => signOut({ callbackUrl: '/login' })}>
+            Log Out
+          </Button>
+        </>
       )}
 
       {session.status === 'unauthenticated' && (
