@@ -25,6 +25,7 @@ const useSignupForm = ({ type }: { type: string }) => {
     console.log('Adding user information')
     const data = {
       owner: user.email,
+      type: type,
       name: name
     };
 
@@ -45,7 +46,7 @@ const useSignupForm = ({ type }: { type: string }) => {
             console.log('User signed in');
             // Add the user to the database
             const documentID = await addUserInformation(userCredential.user, name);
-            window.location.href = `${result.url}?documentID=${documentID.id}&type=${type}`;
+            window.location.href = `${result.url}?documentID=${documentID.id}&type=${type}&name=${name}`;
           }
         }
       });

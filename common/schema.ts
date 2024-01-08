@@ -1,6 +1,12 @@
 import { z, infer } from 'zod';
 
 export const OnboardingSchema = z.object({
+  name: z.string().min(1, {
+    message: 'Name is required'
+  }),
+  type: z.string().min(1, {
+    message: 'Type is required'
+  }),
   image: z.string().min(1, {
     message: 'Please submit a photo'
   }),
