@@ -1,6 +1,7 @@
+import { Button } from '@/components/ui/button';
 import Image from 'next/image';
 import React from 'react';
-import Map from '../../EcosystemMapping/MainContent/Map/Map';
+import { TiPencil } from "react-icons/ti";
 
 type DetailsProps = {
   startup: {
@@ -9,12 +10,20 @@ type DetailsProps = {
     employees: string;
     location: string;
   };
+  page?: string;
 };
 
-const Details = ({ startup }: DetailsProps) => {
+const Details = ({ startup, page }: DetailsProps) => {
   return (
     <>
-      <h1 className='text-3xl mb-9 text-neutrals-50'>Details</h1>
+      <div className={`${page === 'profile' ? 'flex justify-between' : ''}`}>
+        <h1 className='text-3xl mb-9 text-neutrals-50'>Details</h1>
+        {page === 'profile' && (
+          <Button variant='ghost'>
+            <TiPencil size={24} />
+          </Button>
+        )}
+      </div>
       <div className='flex flex-col gap-4'>
         <div className='flex gap-1'>
           <Image src='/icons/buildings.svg' alt='Buildings' width={20} height={20} />
@@ -33,7 +42,6 @@ const Details = ({ startup }: DetailsProps) => {
           <span>{startup.location}</span>
         </div>
       </div>
-      
     </>
   );
 };

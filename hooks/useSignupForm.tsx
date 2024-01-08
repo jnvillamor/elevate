@@ -22,7 +22,6 @@ const useSignupForm = ({ type }: { type: string }) => {
   });
 
   const addUserInformation = async (user: any, name: string) => {
-    console.log('Adding user information')
     const data = {
       owner: user.email,
       type: type,
@@ -30,9 +29,19 @@ const useSignupForm = ({ type }: { type: string }) => {
     };
 
     const docRef = await addDoc(collection(db, type), data);
-    console.log('Document written with ID: ', docRef.id);
     return docRef;
   };
+
+  const addUser = async (user: any, type: string) => {
+    const data = {
+      type: type,
+      email: user.email,
+      user: user.uid,
+      name: user.displayName
+    };
+
+    const docRef = await addDoc(collection(db, 'users'), data);
+  }
 
   const submit = form.handleSubmit(async ({ email, password, name }) => {
     try {
@@ -45,6 +54,7 @@ const useSignupForm = ({ type }: { type: string }) => {
           } else if (result?.url) {
             console.log('User signed in');
             // Add the user to the database
+            addUser(userCredential.user, type);
             const documentID = await addUserInformation(userCredential.user, name);
             window.location.href = `${result.url}?documentID=${documentID.id}&type=${type}&name=${name}`;
           }

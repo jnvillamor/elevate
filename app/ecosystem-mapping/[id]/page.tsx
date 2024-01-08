@@ -58,12 +58,12 @@ const StartupDetails = ({ params }: { params: { id: string } }) => {
                 <div className='rounded-full px-4 py-2 bg-neutrals-700'>{startup.industry}</div>
               </div>
             </div>
-            {startup.awards.length > 0 && (
+            {startup.awards && startup.awards.length > 0 && (
               <div className='bg-neutrals-916 p-6 rounded-3xl'>
                 <Awards awards={startup.awards} />
               </div>
             )}
-            {startup.certifications.length > 0 && (
+            {startup.certifications && startup.certifications.length > 0 && (
               <div className='bg-neutrals-916 p-6 rounded-3xl'>
                 <Certifications certifications={startup.certifications} />
               </div>

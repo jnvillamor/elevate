@@ -1,7 +1,12 @@
 import { Button } from '@/components/ui/button';
+import { useSession } from 'next-auth/react';
 import React from 'react';
 
 const Contact = () => {
+  const { data } = useSession();
+
+  if (data?.user) return null;
+
   return (
     <div className='bg-neutrals-950 py-32 px-16 flex justify-between'>
       <div className='w-7/12 flex flex-col justify-between'>

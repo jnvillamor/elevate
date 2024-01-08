@@ -21,16 +21,16 @@ export type Startup = {
   };
   founded: string;
   image: string;
-  about: string;
+  about?: string;
   employees: string;
-  contacts: {
+  contacts?: {
     website?: string;
     facebook?: string;
     linkedin?: string;
     instagram?: string;
   };
-  awards: Awards[];
-  certifications: Certifications[];
+  awards?: Awards[];
+  certifications?: Certifications[];
 };
 
 export type FooterLink = {

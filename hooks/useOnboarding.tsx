@@ -87,6 +87,7 @@ const useOnboarding = () => {
 
       // Update document
       await updateDoc(docRef, data);
+      window.location.href = '/profile';
     } catch (error: any) {
       showError('Error', error.message);
     }
