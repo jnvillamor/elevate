@@ -59,12 +59,25 @@ export const SignUpSchema = z
 
 export type SignUpFormValues = z.infer<typeof SignUpSchema>;
 
-
 export const AddContactSchema = z.object({
   facebook: z.string().optional(),
   website: z.string().optional(),
   instagram: z.string().optional(),
-  linkedin: z.string().optional(),
+  linkedin: z.string().optional()
 });
 
 export type AddContactFormValues = z.infer<typeof AddContactSchema>;
+
+export const CertificatesSchema = z.object({
+  title: z.string().min(1, {
+    message: 'Title is required'
+  }),
+  year_awarded: z.string().min(1, {
+    message: 'Year is required'
+  }),
+  description: z.string().min(1, {
+    message: 'Description is required'
+  })
+});
+
+export type CertificateFormValues = z.infer<typeof CertificatesSchema>;

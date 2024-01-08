@@ -41,7 +41,7 @@ const AboutForm = () => {
           className='w-full bg-neutrals-916 text-neutrals-50 border-neutrals-300 hover:border-neutrals-300 placeholder:text-neutral-50 focus-visible:ring-0 mt-6'
         />
         <div className='flex justify-end'>
-          <Button className='mt-6 rounded-md bg-primary-600 text-neutrals-50' disabled={form.formState.isSubmitting}>
+          <Button className='mt-6 px-6 py-3 rounded-md bg-primary-600 text-neutrals-5 text-xl' disabled={form.formState.isSubmitting}>
             {form.formState.isSubmitting ? 'Saving...' : 'Save'}
           </Button>
         </div>

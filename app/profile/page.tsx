@@ -15,6 +15,7 @@ import { Dialog, DialogContent, DialogHeader, DialogTrigger } from '@/components
 import { Button } from '@/components/ui/button';
 import { TiPencil } from 'react-icons/ti';
 import AboutForm from '@/components/pages/Profile/AboutForm';
+import CertificatesForm from '@/components/pages/Profile/CertificatesForm';
 
 const Profile = () => {
   const { entity, isFetching } = useProfile();
@@ -65,7 +66,7 @@ const Profile = () => {
           <div className='lg:w-2/3 w-full flex flex-col gap-6'>
             <div className='bg-neutrals-916 w-full p-6 rounded-3xl flex justify-between'>
               <h1 className='text-3xl text-neutrals-50'>Add Section</h1>
-              <Dialog>
+              <Dialog onOpenChange={() => setOpenForm(null)}>
                 <DialogTrigger>
                   <Button variant='ghost'>
                     <TiPencil size={24} />
@@ -96,7 +97,7 @@ const Profile = () => {
                     </>
                   )}
                   {openForm === 'about' && <AboutForm />}
-                  
+                  {openForm === 'certificates' && <CertificatesForm />}
                 </DialogContent>
               </Dialog>
             </div>
