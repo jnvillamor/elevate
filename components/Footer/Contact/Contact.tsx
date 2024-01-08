@@ -35,7 +35,7 @@ const Contact = () => {
             <span>Expanding</span> <span>Startup</span>
           </Button>
         </Link>
-        <Link href='/signup/investor'>
+        <Link href='/signup/enabler'>
           <Button
             variant='outline'
             className='border-primary-500 text-primary-500 w-full py-16 flex flex-col leading-none font-normal font-test_staff text-3xl hover:bg-primary-300 hover:text-neutral-950'>
