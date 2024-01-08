@@ -4,6 +4,7 @@ type AwardsProps = {
   awards: {
     title: string;
     year_awarded: string;
+    description: string;
   }[];
 };
 
@@ -16,6 +17,7 @@ const Awards = ({ awards }: AwardsProps) => {
           <div className='px-9 py-6 bg-neutrals-900 rounded-md' key={index}>
             <h1 className='text-2xl mb-3 text-neutrals-50'>{award.title}</h1>
             <p className='text-xl'>{award.year_awarded}</p>
+            <div className='text-xl'>{award.description}</div>
           </div>
         ))}
       </div>

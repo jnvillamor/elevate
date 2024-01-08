@@ -2,17 +2,18 @@ import { Button } from '@/components/ui/button';
 import { Form, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
-import useCertificatesForm from '@/hooks/useCertificatesForm';
+import useCertificatesAwardsForm from '@/hooks/useCertificatesAwardsForm';
 import { cn } from '@/lib/utils';
 import React from 'react';
 
-const CertificatesForm = () => {
-  const { form, errors, isSubmitting, submit } = useCertificatesForm();
+const CertificatesAwardsForm = ({ type }: { type: 'certifications' | 'awards' }) => {
+  const { form, errors, isSubmitting, submit } = useCertificatesAwardsForm({ type: type });
 
   return (
     <Form {...form}>
       <form onSubmit={submit}>
-        <h1 className='text-2xl mb-6'>Certificate</h1>
+        {/* Capitalize first letter of type */}
+        <h1 className='text-2xl mb-6'>{type.charAt(0).toUpperCase() + type.slice(1)}</h1>
         <div className='flex flex-col gap-6'>
           <FormItem>
             <FormLabel className='text-neutrals-50 text-xl mb-3'>Title</FormLabel>
@@ -40,7 +41,7 @@ const CertificatesForm = () => {
           </FormItem>
 
           <FormItem>
-            <FormLabel className='text-neutrals-50 text-xl mb-3'>Year Awarded</FormLabel>
+            <FormLabel className='text-neutrals-50 text-xl mb-3'>Description</FormLabel>
             <Textarea
               {...form.register('description')}
               maxLength={1000}
@@ -60,4 +61,4 @@ const CertificatesForm = () => {
   );
 };
 
-export default CertificatesForm;
+export default CertificatesAwardsForm;

@@ -33,7 +33,7 @@ const AboutForm = () => {
   return (
     <Form {...form}>
       <form onSubmit={submit}>
-        <p>About</p>
+        <p className='text-2xl'>About</p>
         <Textarea
           {...form.register('about')}
           maxLength={1500}

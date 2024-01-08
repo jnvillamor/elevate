@@ -15,7 +15,7 @@ import { Dialog, DialogContent, DialogHeader, DialogTrigger } from '@/components
 import { Button } from '@/components/ui/button';
 import { TiPencil } from 'react-icons/ti';
 import AboutForm from '@/components/pages/Profile/AboutForm';
-import CertificatesForm from '@/components/pages/Profile/CertificatesForm';
+import CertificatesAwardsForm from '@/components/pages/Profile/CertificatesAwardsForm';
 
 const Profile = () => {
   const { entity, isFetching } = useProfile();
@@ -97,7 +97,8 @@ const Profile = () => {
                     </>
                   )}
                   {openForm === 'about' && <AboutForm />}
-                  {openForm === 'certificates' && <CertificatesForm />}
+                  {openForm === 'certificates' && <CertificatesAwardsForm type='certifications' />}
+                  {openForm === 'awards' && <CertificatesAwardsForm type='awards' />}
                 </DialogContent>
               </Dialog>
             </div>

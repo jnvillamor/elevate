@@ -1,6 +1,7 @@
 type Awards = {
   title: string;
   year_awarded: string;
+  description: string;
 };
 
 type Certifications = {

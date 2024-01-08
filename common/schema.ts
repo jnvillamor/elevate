@@ -68,7 +68,7 @@ export const AddContactSchema = z.object({
 
 export type AddContactFormValues = z.infer<typeof AddContactSchema>;
 
-export const CertificatesSchema = z.object({
+export const CertificatesAwardsSchema = z.object({
   title: z.string().min(1, {
     message: 'Title is required'
   }),
@@ -80,4 +80,4 @@ export const CertificatesSchema = z.object({
   })
 });
 
-export type CertificateFormValues = z.infer<typeof CertificatesSchema>;
+export type CertificatesAwardsFormValues = z.infer<typeof CertificatesAwardsSchema>;
