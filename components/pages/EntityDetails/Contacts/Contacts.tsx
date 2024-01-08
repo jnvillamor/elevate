@@ -3,7 +3,8 @@ import Link from 'next/link';
 import React from 'react';
 import { FaFacebookSquare, FaInstagramSquare, FaLink, FaLinkedin } from 'react-icons/fa';
 import { TiPencil } from 'react-icons/ti';
-import ContactDialog from '../../Profile/ContactDialog';
+import { Dialog, DialogContent, DialogHeader, DialogTrigger } from '@/components/ui/dialog';
+import ContactForm from '../../Profile/ContactForm';
 
 type ContactsProps = {
   contacts?: {
@@ -16,13 +17,22 @@ type ContactsProps = {
 };
 
 const Contacts = ({ contacts, page }: ContactsProps) => {
-  
   return (
     <>
       <div className={`${page === 'profile' ? 'flex items-center justify-between mb-9' : 'mb-9'}`}>
         <h1 className='text-3xl text-neutrals-50'>Contacts</h1>
         {page === 'profile' && (
-          <ContactDialog />
+          <Dialog>
+            <DialogTrigger>
+              <Button variant='ghost'>
+                <TiPencil size={24} />
+              </Button>
+            </DialogTrigger>
+            <DialogContent className='bg-neutrals-932 p-12'>
+              <DialogHeader className='text-3xl'>Contacts</DialogHeader>
+              <ContactForm />
+            </DialogContent>
+          </Dialog>
         )}
       </div>
       <div className='flex flex-col gap-4'>

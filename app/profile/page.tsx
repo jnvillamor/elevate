@@ -11,9 +11,15 @@ import Link from 'next/link';
 import React from 'react';
 import { FaAngleLeft } from 'react-icons/fa';
 import ProfileSkeleton from './ProfileSkeleton';
+import { Dialog, DialogContent, DialogHeader, DialogTrigger } from '@/components/ui/dialog';
+import { Button } from '@/components/ui/button';
+import { TiPencil } from 'react-icons/ti';
+import AboutForm from '@/components/pages/Profile/AboutForm';
 
 const Profile = () => {
   const { entity, isFetching } = useProfile();
+
+  const [openForm, setOpenForm] = React.useState<'about' | 'awards' | 'certificates' | null>(null);
 
   if (isFetching) return <ProfileSkeleton />;
   if (!entity) return null;
@@ -57,6 +63,44 @@ const Profile = () => {
           </div>
 
           <div className='lg:w-2/3 w-full flex flex-col gap-6'>
+            <div className='bg-neutrals-916 w-full p-6 rounded-3xl flex justify-between'>
+              <h1 className='text-3xl text-neutrals-50'>Add Section</h1>
+              <Dialog>
+                <DialogTrigger>
+                  <Button variant='ghost'>
+                    <TiPencil size={24} />
+                  </Button>
+                </DialogTrigger>
+                <DialogContent className='bg-neutrals-932'>
+                  <DialogHeader className='text-3xl mb-6'>Section</DialogHeader>
+                  {openForm === null && (
+                    <>
+                      <Button
+                        variant='ghost'
+                        onClick={() => setOpenForm('about')}
+                        className='hover:bg-neutrals-916 hover:text-neutrals-50 px-12 py-3 w-full h-full text-xl text-neutrals-50 flex justify-start'>
+                        About
+                      </Button>
+                      <Button
+                        variant='ghost'
+                        onClick={() => setOpenForm('certificates')}
+                        className='hover:bg-neutrals-916 hover:text-neutrals-50 px-12 py-3 w-full h-full text-xl text-neutrals-50 flex justify-start'>
+                        Certificates
+                      </Button>
+                      <Button
+                        variant='ghost'
+                        onClick={() => setOpenForm('awards')}
+                        className='hover:bg-neutrals-916 hover:text-neutrals-50 px-12 py-3 w-full h-full text-xl text-neutrals-50 flex justify-start'>
+                        Awards
+                      </Button>
+                    </>
+                  )}
+                  {openForm === 'about' && <AboutForm />}
+                  
+                </DialogContent>
+              </Dialog>
+            </div>
+
             {entity.about && (
               <div className='bg-neutrals-916 p-6 rounded-3xl'>
                 <h1 className='text-3xl text-neutrals-50 mb-9'>About</h1>
