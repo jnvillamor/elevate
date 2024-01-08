@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import Link from 'next/link';
 import { Button } from '../ui/button';
 import { useSession } from 'next-auth/react';
@@ -30,9 +30,6 @@ const NavLinks = ({ path }: NavLinksProps) => {
         <>
           <Link href='/login'>
             <Button variant='outline_rounded'>Log In</Button>
-          </Link>
-          <Link href='/signup'>
-            <Button variant='outline_rounded'>Sign Up</Button>
           </Link>
         </>
       )}
