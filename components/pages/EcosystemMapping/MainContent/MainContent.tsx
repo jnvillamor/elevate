@@ -16,7 +16,7 @@ const MainContent = () => {
             Map View
           </Button>
           <Button className='rounded-full' variant={view === 'table' ? 'default' : 'ghost'} onClick={() => setView('table')}>
-            Table View
+            List View
           </Button>
         </div>
       </div>
