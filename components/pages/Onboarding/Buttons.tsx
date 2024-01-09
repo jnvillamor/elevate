@@ -74,7 +74,7 @@ const Buttons = ({ currentStep, isQuitting, previousStep, nextStep, submit, hand
       )}
 
       {currentStep === 2 && (
-        <div className='bg-[#171717bf] w-full fixed top-1/2 -translate-y-1/2 py-12 z-10 flex justify-center items-center gap-6'>
+        <div className='bg-[#171717bf] w-full fixed bottom-0 py-12 z-10 flex justify-center items-center gap-6'>
           <Button
             type='button'
             onClick={previousStep}

@@ -27,8 +27,8 @@ const StartupDetails = ({ params }: { params: { id: string } }) => {
   };
 
   return (
-    <div className='bg-neutrals-932 text-neutrals-200'>
-      <div className='max-w-screen-2xl w-full m-auto pt-12 pb-32'>
+    <div className='bg-neutrals-932 text-neutrals-200 flex justify-center'>
+      <div className='max-w-screen-2xl mx-16 w-full pt-12 pb-32'>
         <Link href='/ecosystem-mapping' className='flex gap-2 text-neutrals-300 mb-16'>
           <FaAngleLeft size={24} />
           <span>Mapping / Startups</span>

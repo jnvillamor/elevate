@@ -1,4 +1,3 @@
-import React from 'react';
 import { z } from 'zod';
 import useShowError from './useShowError';
 import { useForm } from 'react-hook-form';
@@ -29,7 +28,7 @@ const useLogInForm = () => {
 
   const submit = form.handleSubmit(async ({ email, password }) => {
     try {
-      const result = await signIn('credentials', { email, password, redirect: false, callbackUrl: '/' });
+      const result = await signIn('credentials', { email, password, redirect: false, callbackUrl: '/ecosystem-mapping' });
 
       if (result?.error) {
         showError('Error', result.error);
